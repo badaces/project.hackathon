@@ -1,6 +1,8 @@
 <?php
 
 use App\Web\Plates\Extension\AssetResolverExtension;
+use App\Web\ConfigurationFactory;
+use CBC\Utility\Configuration;
 use DCP\Di\Container;
 use DCP\Di\ServiceReference;
 use League\Plates\Engine;
@@ -45,5 +47,11 @@ $di
     ->toClass(Engine::class)
     ->addArgument('directory', realpath(__DIR__ . '/../templates'))
     ->addMethodCall('loadExtension', [new ServiceReference(AssetResolverExtension::class)])
+    ->asShared()
+;
+
+$di
+    ->register(Configuration::class, 'config')
+    ->toFactory([ConfigurationFactory::class, 'create'])
     ->asShared()
 ;
