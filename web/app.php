@@ -1,7 +1,7 @@
 <?php
 
 require '../vendor/autoload.php';
-require '../config/config.php';
+require '../src/config/config.php';
 
 use App\Web\Application;
 
