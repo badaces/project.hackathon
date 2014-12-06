@@ -1,5 +1,5 @@
-;(function (d3) {
+;(function (hm, d3) {
     'use strict';
 
 
-})(d3);
+})(hm, d3);
