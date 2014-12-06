@@ -1,6 +1,8 @@
 <?php
 
+use App\Web\Plates\Extension\AssetResolverExtension;
 use DCP\Di\Container;
+use DCP\Di\ServiceReference;
 use League\Plates\Engine;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RequestContext;
@@ -42,5 +44,6 @@ $di
     ->register(Engine::class)
     ->toClass(Engine::class)
     ->addArgument('directory', realpath(__DIR__ . '/../templates'))
+    ->addMethodCall('loadExtension', [new ServiceReference(AssetResolverExtension::class)])
     ->asShared()
 ;
