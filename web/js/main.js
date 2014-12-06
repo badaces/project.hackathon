@@ -20,9 +20,6 @@
     panels.herbicide = container.appendChild(panel.cloneNode(true));
     panels.herbicide.className = 'herbicide';
 
-    container.appendChild(panel.cloneNode(true));
-    container.appendChild(panel.cloneNode(true));
-
     var data = [25, 13, 27, 32, 23, 47, 34, 22, 18, 34, 11, 42, 35, 44];
 
     var chartWidth = 170;
@@ -33,13 +30,13 @@
         .domain([0, d3.max(data, function (d) { return d; })])
         .range([chartHeight, 0]);
 
-    var chart = d3.select(panels.herbicide)
+    var barChart = d3.select(panels.herbicide)
         .append('svg')
         .attr('width', width)
         .attr('height', chartHeight)
         .attr('transform', 'translate(' + (width - chartWidth) + ', 2)');
 
-    var bar = chart.selectAll('g')
+    var bar = barChart.selectAll('g')
         .data(data)
         .enter().append('g')
         .attr('transform', function (d, i) { return 'translate(' + (i * barWidth) + ', 0)'; });
@@ -49,6 +46,14 @@
         .attr('height', function (d) { return chartHeight - scaleY(d); })
         .attr('width', barWidth - 2);
 
-    console.log(chart);
+    console.log(barChart);
     console.log(bar);
+
+
+
+
+
+
+
+
 })(hm, d3);
