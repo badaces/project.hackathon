@@ -31,9 +31,10 @@
         "symfony/http-foundation": "2.6.*",
         "symfony/routing": "2.6.*",
         "league/plates": "3.1.*",
-        "dcp/di": "dev-master",
+        "dcp/di": "dev-master#6a7c036ada121a3cde12f7fbf2ee8e629d2b6c04",
         "dcp/validator": "1.0.*",
         "cbc/configuration": "0.1.*",
-        "guzzle/guzzle": "3.9.*"
+        "guzzle/guzzle": "3.9.*",
+        "igorw/retry": "dev-master#c34c68c9e2a6e0f1bbab44c1dfceb73ba2a270a3"
     }
 }
