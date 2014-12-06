@@ -8,12 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
 
-    <link rel="stylesheet" href="<?php $this->asset('css/main.css') ?>"/>
+    <link rel="stylesheet" href="<?= $this->asset('css/main.css') ?>"/>
 
     <title>Globathon - <?= $title ?></title>
 </head>
 <body>
+<div class="container">
     <?= $this->section('content') ?>
-    <?php $this->insert('Base/javascript') ?>
+</div>
+
+<?php $this->insert('Base/javascript') ?>
 </body>
 </html>
