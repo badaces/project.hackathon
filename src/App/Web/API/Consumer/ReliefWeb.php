@@ -2,7 +2,11 @@
 
 namespace App\Web\API\Consumer;
 
+use App\Web\API\Entity\Country;
 use CBC\Utility\Configuration;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Guzzle\Http\Client;
 
 class ReliefWeb extends AbstractConsumer
@@ -28,6 +32,10 @@ class ReliefWeb extends AbstractConsumer
         $this->client = $client;
     }
 
+    /**
+     * @return Collection|Selectable|Country[]
+     * @throws \App\Web\API\Exception\FailedRequestException
+     */
     public function getCountries()
     {
         $client = $this->client;
@@ -46,8 +54,19 @@ class ReliefWeb extends AbstractConsumer
         );
 
         $response = $this->sendRequest($request);
-        $responseData = json_decode($response->getBody(true), true);
+        $countriesData = json_decode($response->getBody(true), true)['data'];
 
-        var_dump($responseData);
+        $countries = new ArrayCollection();
+
+        foreach ($countriesData as $countryData) {
+            $countries->add(new Country(
+                $countryData['id'],
+                $countryData['score'],
+                $countryData['href'],
+                $countryData['fields']['name']
+            ));
+        }
+
+        return $countries;
     }
 }
