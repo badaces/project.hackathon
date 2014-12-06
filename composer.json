@@ -1,0 +1,36 @@
+{
+    "name": "badaces/project.hackathon",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Estel Smith",
+            "email": "estel.smith@gmail.com"
+        },
+        {
+            "name": "Cameron Condry",
+            "email": "ccondry2@gmail.com"
+        },
+        {
+            "name": "Aime Menendez",
+            "email": "aime.menendez@gmail.com"
+        },
+        {
+            "name": "Stefan Gimmillaro",
+            "email": "sgimmillaro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "App\\": "src"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require": {
+        "symfony/http-foundation": "2.6.*",
+        "symfony/routing": "2.6.*",
+        "dcp/di": "dev-master",
+        "dcp/validator": "1.0.*"
+    }
+}
