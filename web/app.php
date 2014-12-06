@@ -27,6 +27,7 @@ try {
     $response = $responder->execute();
     $response->send();
 } catch (ResourceNotFoundException $e) {
-    $response = new Response(':-( not found.', Response::HTTP_NOT_FOUND);
+    $content = sprintf(':-( could not find %s', $request->getRequestUri());
+    $response = new Response($content, Response::HTTP_NOT_FOUND);
     $response->send();
 }
