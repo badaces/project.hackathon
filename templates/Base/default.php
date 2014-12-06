@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
 
+    <link rel="stylesheet" href="<?php $this->asset('css/main.css') ?>"/>
+
     <title>Globathon - <?= $title ?></title>
 </head>
 <body>
