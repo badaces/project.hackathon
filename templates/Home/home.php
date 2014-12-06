@@ -1,1 +1,3 @@
-This is where stuff should be showing up!
+<?php $this->layout('Base/default', ['title' => 'Home']) ?>
+
+This is the home template.
