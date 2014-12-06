@@ -32,6 +32,7 @@
         "symfony/routing": "2.6.*",
         "league/plates": "3.1.*",
         "dcp/di": "dev-master",
-        "dcp/validator": "1.0.*"
+        "dcp/validator": "1.0.*",
+        "cbc/configuration": "0.1.*"
     }
 }
