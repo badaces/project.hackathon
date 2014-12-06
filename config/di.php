@@ -1,6 +1,7 @@
 <?php
 
 use DCP\Di\Container;
+use League\Plates\Engine;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
@@ -34,5 +35,12 @@ $di
 $di
     ->register(UrlMatcherInterface::class, 'url_matcher')
     ->toClass(UrlMatcher::class)
+    ->asShared()
+;
+
+$di
+    ->register(Engine::class)
+    ->toClass(Engine::class)
+    ->addArgument('directory', realpath(__DIR__ . '/../templates'))
     ->asShared()
 ;
