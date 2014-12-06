@@ -43,7 +43,7 @@ $di
 $di
     ->register(Engine::class)
     ->toClass(Engine::class)
-    ->addArgument('directory', realpath(__DIR__ . '/../../templates'))
+    ->addArgument('directory', realpath(__DIR__ . '/../templates'))
     ->addMethodCall('loadExtension', [new ServiceReference(AssetResolverExtension::class)])
     ->asShared()
 ;
