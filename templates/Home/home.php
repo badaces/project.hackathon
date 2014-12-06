@@ -1,3 +1,4 @@
 <?php $this->layout('Base/default', ['title' => 'Home']) ?>
 
-This is the home template.
+<h1>Welcome to the end of the world!</h1>
+<svg class="panels"></svg>
