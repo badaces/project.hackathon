@@ -3,11 +3,10 @@
 namespace App\Web;
 
 use CBC\Utility\Configuration;
-use DCP\Di\Container;
 
 class ConfigurationFactory
 {
-    public static function create(Container $container)
+    public static function create()
     {
         $rootPath = realpath(__DIR__ . '/../../../');
         $configPath = $rootPath . '/app-config.json';
