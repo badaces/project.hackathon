@@ -33,6 +33,7 @@
         "league/plates": "3.1.*",
         "dcp/di": "dev-master",
         "dcp/validator": "1.0.*",
-        "cbc/configuration": "0.1.*"
+        "cbc/configuration": "0.1.*",
+        "guzzle/guzzle": "3.9.*"
     }
 }
