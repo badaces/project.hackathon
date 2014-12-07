@@ -1,12 +1,14 @@
 <?php $this->layout('Base/default', ['title' => 'Home']) ?>
-	
-<h1>Application Name</h1>
 
-<p>Application description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quis explicabo, at totam tempora cumque, qui quaerat praesentium, quod voluptatem tempore aliquam dicta nisi blanditiis debitis soluta, eveniet dolor cum eligendi quas. Expedita nam nulla molestiae corrupti sunt sit earum, numquam temporibus. Repellat rerum omnis repudiandae hic placeat, eligendi impedit, reiciendis quos recusandae eveniet quam deleniti cupiditate perspiciatis, iusto quisquam.</p>
+<header>
+	<h1>Application Name</h1>
+
+	<p>Application description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quis explicabo, at totam tempora cumque, qui quaerat praesentium, quod voluptatem tempore aliquam dicta nisi blanditiis debitis soluta, eveniet dolor cum eligendi quas. Expedita nam nulla molestiae corrupti sunt sit earum, numquam temporibus. Repellat rerum omnis repudiandae hic placeat, eligendi impedit, reiciendis quos recusandae eveniet quam deleniti cupiditate perspiciatis, iusto quisquam.</p>
+</header>
 
 <div id="main-canvas">
 	
-	<div class="stage-wrapper">
+	<div id="stage-wrapper">
 		
 		<div class="infographic">
 			<img src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="Bla bla bla">
