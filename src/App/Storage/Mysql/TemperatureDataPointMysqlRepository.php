@@ -35,7 +35,7 @@ class TemperatureDataPointMysqlRepository implements TemperatureDataPointReposit
 
         $statement = $database->prepare($sql);
 
-        $statement->query([
+        $statement->execute([
             ':id' => $id
         ]);
 
