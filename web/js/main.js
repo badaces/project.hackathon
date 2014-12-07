@@ -18,5 +18,6 @@
 
     eventmanager.subscribe('d3.stage.assets.ready', function () {
         stage.showTerrain();
+        stage.showClouds();
     });
 })(hm, d3);
