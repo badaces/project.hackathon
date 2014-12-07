@@ -76,6 +76,57 @@ class TemperatureDataPointMysqlRepository implements TemperatureDataPointReposit
 
     public function saveGroup($collection)
     {
-        // @TODO: Finish this to prevent the database from being beaten up.
+        $batchSize = 500;
+
+        $database = $this->database;
+
+        $sql  = 'INSERT INTO ' . $this->tableName;
+        $sql .= ' (year, month, data)';
+        $sql .= ' VALUES';
+
+        $newSql = $sql;
+        $params = [];
+
+        $database->beginTransaction();
+        foreach ($collection as $index => $temperatureDataPoint) {
+            $newSql .= '(?, ?, ?),';
+            $dataPoint = $temperatureDataPoint->getDataPoint();
+            $params = array_merge($params, [
+                $dataPoint->getYear(),
+                $dataPoint->getMonth(),
+                $dataPoint->getData()
+            ]);
+
+            if ($index > 0 && $index % $batchSize === 0) {
+                $newSql = substr($newSql, 0, -1);
+                $statement = $database->prepare($newSql);
+                $result = $statement->execute($params);
+
+                $newSql = $sql;
+                $params = [];
+
+                if (!$result) {
+                    var_dump($statement->errorInfo());
+                    throw new StorageFailureException('Could not save TemperatureDataPoint collection');
+                }
+            }
+        }
+
+        // If there are bound params, then there are still pending inserts that did not fill a full batch
+        if ($params) {
+            $newSql = substr($newSql, 0, -1);
+            $statement = $database->prepare($newSql);
+            $result = $statement->execute($params);
+
+            if (!$result) {
+                throw new StorageFailureException('Could not save TemperatureDataPoint collection');
+            }
+        }
+
+        $result = $database->commit();
+
+        if (!$result) {
+            throw new StorageFailureException('Could not save TemperatureDataPoint collection');
+        }
     }
 }

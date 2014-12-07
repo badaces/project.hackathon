@@ -45,12 +45,9 @@ class ImportTemperatureDataCommand extends Command
         $dataPointRepository = $this->temperatureDataPointRepository;
 
         $data = $this->readDataFile();
-
         $dataPoints = TemperatureDataPointMapper::multipleFromArray($data);
 
-        foreach ($dataPoints as $dataPoint) {
-            $dataPointRepository->save($dataPoint);
-        }
+        $dataPointRepository->saveGroup($dataPoints);
     }
 
     private function readDataFile()
