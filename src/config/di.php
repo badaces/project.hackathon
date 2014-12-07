@@ -1,11 +1,13 @@
 <?php
 
+use App\Command\ImportTemperatureDataCommand;
 use App\Web\Plates\Extension\AssetResolverExtension;
 use App\Web\ConfigurationFactory;
 use CBC\Utility\Configuration;
 use DCP\Di\Container;
 use DCP\Di\ServiceReference;
 use League\Plates\Engine;
+use Symfony\Component\Console\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
@@ -53,5 +55,12 @@ $di
 $di
     ->register(Configuration::class, 'config')
     ->toFactory([ConfigurationFactory::class, 'create'])
+    ->asShared()
+;
+
+$di
+    ->register(Application::class)
+    ->toClass(Application::class)
+    ->addMethodCall('add', [new ServiceReference(ImportTemperatureDataCommand::class)])
     ->asShared()
 ;
