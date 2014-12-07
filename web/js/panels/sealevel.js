@@ -44,7 +44,17 @@
             bar.append('rect')
                 .style('fill', 'steelblue')
                 .attr('width', function (d) { return d + 10; })
-                .attr('height', barHeight - 1);
+                .attr('height', barHeight - 1)
+                .on('mouseenter', function () {
+                    d3.select(this).transition()
+                        .duration(200)
+                        .style('fill', 'royalblue');
+                })
+                .on('mouseleave', function () {
+                    d3.select(this).transition()
+                        .duration(200)
+                        .style('fill', 'steelblue');
+                });
 
             bar.append('text')
                 .style('fill', 'white')
