@@ -3,4 +3,4 @@
 *.DS_Store
 /vendor
 /bin
-/app-config.json
+*app-config.json
