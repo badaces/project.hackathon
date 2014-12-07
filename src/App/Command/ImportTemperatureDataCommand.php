@@ -3,8 +3,12 @@
 namespace App\Command;
 
 use App\Command\Exception\MissingFileException;
-use App\Entity\Mapper\TemperatureDataPointMapper;
-use App\Entity\Repository\TemperatureDataPointRepository;
+use App\Entity\DataPointType;
+use App\Entity\Mapper\DataPointMapper;
+use App\Entity\Mapper\DataPointTypeMapper;
+use App\Entity\Repository\DataPointRepository;
+use App\Entity\Repository\DataPointTypeRepository;
+use App\Entity\Repository\Exception\EntityNotFoundException;
 use CBC\Utility\Configuration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -18,17 +22,24 @@ class ImportTemperatureDataCommand extends Command
     private $dataFilePath;
 
     /**
-     * @var TemperatureDataPointRepository
+     * @var DataPointTypeRepository
      */
-    private $temperatureDataPointRepository;
+    private $dataPointTypeRepository;
+
+    /**
+     * @var DataPointRepository
+     */
+    private $dataPointRepository;
 
     public function __construct(
         Configuration $configuration,
-        TemperatureDataPointRepository $temperatureDataPointRepository
+        DataPointTypeRepository $dataPointTypeRepository,
+        DataPointRepository $dataPointRepository
     )
     {
         $this->dataFilePath = $configuration->get('root_path') . '/app/data/GLB.Ts+dSST.txt';
-        $this->temperatureDataPointRepository = $temperatureDataPointRepository;
+        $this->dataPointTypeRepository = $dataPointTypeRepository;
+        $this->dataPointRepository = $dataPointRepository;
         parent::__construct();
     }
 
@@ -42,15 +53,26 @@ class ImportTemperatureDataCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dataPointRepository = $this->temperatureDataPointRepository;
+        $dataPointTypeRepository = $this->dataPointTypeRepository;
+        $dataPointRepository = $this->dataPointRepository;
 
-        $data = $this->readDataFile();
-        $dataPoints = TemperatureDataPointMapper::multipleFromArray($data);
+        $dataPointType = null;
+        try {
+            $dataPointType = $dataPointTypeRepository->findByName(DataPointType::TEMPERATURE);
+        } catch (EntityNotFoundException $e) {
+            $dataPointType = new DataPointType(DataPointType::TEMPERATURE);
+            $dataPointTypeRepository->save($dataPointType);
+        }
+
+        $dataPointType = DataPointTypeMapper::toArray($dataPointType);
+
+        $data = $this->readDataFile($dataPointType);
+        $dataPoints = DataPointMapper::multipleFromArray($data);
 
         $dataPointRepository->saveGroup($dataPoints);
     }
 
-    private function readDataFile()
+    private function readDataFile($type)
     {
         $filePath = $this->dataFilePath;
 
@@ -91,7 +113,8 @@ class ImportTemperatureDataCommand extends Command
                         $data[] = [
                             'year' => $record['year'],
                             'month' => array_search($key, $months, true) + 1,
-                            'data' => $item
+                            'data' => $item,
+                            'type' => $type
                         ];
                     }
                 }

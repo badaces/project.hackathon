@@ -4,6 +4,8 @@ namespace App\Entity;
 
 class DataPointType
 {
+    const TEMPERATURE = 'temperature';
+
     /**
      * @var int
      */

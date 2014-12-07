@@ -3,7 +3,9 @@
 use App\Command\ImportTemperatureDataCommand;
 use App\Command\ImportMethaneDataCommand;
 use App\Entity\Repository\DataPointRepository;
+use App\Entity\Repository\DataPointTypeRepository;
 use App\Storage\Mysql\DataPointMysqlRepository;
+use App\Storage\Mysql\DataPointTypeMysqlRepository;
 use App\Storage\PdoConnectionFactory;
 use App\Web\Plates\Extension\AssetResolverExtension;
 use App\Web\ConfigurationFactory;
@@ -73,6 +75,11 @@ $di
 $di
     ->register(DataPointRepository::class)
     ->toClass(DataPointMysqlRepository::class)
+;
+
+$di
+    ->register(DataPointTypeRepository::class)
+    ->toClass(DataPointTypeMysqlRepository::class)
 ;
 
 $di

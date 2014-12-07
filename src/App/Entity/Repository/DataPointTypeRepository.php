@@ -16,6 +16,13 @@ interface DataPointTypeRepository
     public function findById($id);
 
     /**
+     * @param string $name
+     * @return DataPointType
+     * @throws EntityNotFoundException
+     */
+    public function findByName($name);
+
+    /**
      * @param DataPointType $type
      * @throws StorageFailureException
      */
