@@ -49,6 +49,18 @@ class TemperatureDataPointMysqlRepository implements TemperatureDataPointReposit
         return TemperatureDataPointMapper::fromArray($statement->fetch(\PDO::FETCH_ASSOC));
     }
 
+    public function findAll()
+    {
+        $database = $this->database;
+
+        $sql  = 'SELECT id, year, month, data';
+        $sql .= ' FROM ' . $this->tableName;
+
+        $statement = $database->query($sql);
+
+        return TemperatureDataPointMapper::multipleFromArray($statement->fetchAll(\PDO::FETCH_ASSOC));
+    }
+
     public function save(TemperatureDataPoint $temperatureDataPoint)
     {
         $data = TemperatureDataPointMapper::toArray($temperatureDataPoint);

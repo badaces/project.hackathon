@@ -6,6 +6,7 @@ use App\Entity\Repository\Exception\EntityNotFoundException;
 use App\Entity\Repository\Exception\StorageFailureException;
 use App\Entity\TemperatureDataPoint;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 
 interface TemperatureDataPointRepository
 {
@@ -15,6 +16,11 @@ interface TemperatureDataPointRepository
      * @throws EntityNotFoundException
      */
     public function findById($id);
+
+    /**
+     * @return Collection|Selectable|TemperatureDataPoint[]
+     */
+    public function findAll();
 
     /**
      * @param TemperatureDataPoint $temperatureDataPoint
