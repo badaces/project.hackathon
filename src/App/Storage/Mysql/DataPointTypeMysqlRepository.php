@@ -46,7 +46,31 @@ class DataPointTypeMysqlRepository implements DataPointTypeRepository
             ));
         }
 
-        return DataPointTypeMapper::fromArray($statement->fetchAll(\PDO::FETCH_ASSOC));
+        return DataPointTypeMapper::fromArray($statement->fetch(\PDO::FETCH_ASSOC));
+    }
+
+    public function findByName($name)
+    {
+        $database = $this->database;
+
+        $sql  = 'SELECT id, name';
+        $sql .= ' FROM ' . $this->tableName;
+        $sql .= ' WHERE name = :name';
+
+        $statement = $database->prepare($sql);
+
+        $statement->execute([
+            ':name' => strtolower($name)
+        ]);
+
+        if ($statement->rowCount() === 0) {
+            throw new EntityNotFoundException(sprintf(
+                'Could not find DataPointType entity by name %s',
+                $name
+            ));
+        }
+
+        return DataPointTypeMapper::fromArray($statement->fetch(\PDO::FETCH_ASSOC));
     }
 
     public function save(DataPointType $type)
