@@ -26,7 +26,7 @@ class DataPointMapper
         return new DataPoint(
             (int)$data['year'],
             (int)$data['month'],
-            (int)$data['data'],
+            (float)$data['data'],
             $type,
             $id
         );
