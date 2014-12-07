@@ -35,6 +35,7 @@
         "guzzle/guzzle": "3.9.*",
         "igorw/retry": "dev-master#c34c68c9e2a6e0f1bbab44c1dfceb73ba2a270a3",
         "league/plates": "3.1.*",
+        "robmorgan/phinx": "0.3.*",
         "symfony/console": "2.6.*",
         "symfony/http-foundation": "2.6.*",
         "symfony/routing": "2.6.*"
