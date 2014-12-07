@@ -50,7 +50,7 @@
                 .style('fill', 'white')
                 .style('font', '9px sans-serif')
                 .style('text-anchor', 'end')
-                .attr('x', function (d) { return scaleX(d) - 4; })
+                .attr('x', function (d) { return scaleX(d) - 10; })
                 .attr('y', barHeight / 2)
                 .attr('dy', '0.35em')
                 .text(function (d) { return d; });
@@ -58,7 +58,7 @@
             d3.selectAll('rect').transition()
                 .duration(750)
                 .delay(function (d, i) { return i * 50; })
-                .attr('width', function (d) { return scaleX(d) + 10; })
+                .attr('width', function (d) { return scaleX(d); })
         },
         getPanel: function () {
             this.panel = this.panel || this._d3.createPanel(options.height, options.width);
