@@ -1,6 +1,9 @@
 <?php
 
 use App\Command\ImportTemperatureDataCommand;
+use App\Entity\Repository\TemperatureDataPointRepository;
+use App\Storage\Mysql\TemperatureDataPointMysqlRepository;
+use App\Storage\PdoConnectionFactory;
 use App\Web\Plates\Extension\AssetResolverExtension;
 use App\Web\ConfigurationFactory;
 use CBC\Utility\Configuration;
@@ -62,5 +65,16 @@ $di
     ->register(Application::class)
     ->toClass(Application::class)
     ->addMethodCall('add', [new ServiceReference(ImportTemperatureDataCommand::class)])
+    ->asShared()
+;
+
+$di
+    ->register(TemperatureDataPointRepository::class)
+    ->toClass(TemperatureDataPointMysqlRepository::class)
+;
+
+$di
+    ->register(\PDO::class)
+    ->toFactory([PdoConnectionFactory::class, 'create'])
     ->asShared()
 ;

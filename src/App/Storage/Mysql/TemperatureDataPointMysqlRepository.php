@@ -70,6 +70,8 @@ class TemperatureDataPointMysqlRepository implements TemperatureDataPointReposit
         if (!$result) {
             throw new StorageFailureException('Could not save TemperatureDataPoint');
         }
+
+        $temperatureDataPoint->setId((int)$database->lastInsertId());
     }
 
     public function saveGroup($collection)

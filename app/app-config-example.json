@@ -3,5 +3,12 @@
         "keys": {
             "mashape": "MASHAPE-KEY-HERE"
         }
+    },
+    "database": {
+        "adapter": "mysql",
+        "host": "localhost",
+        "username": "myuser",
+        "password": "mypassword",
+        "dbname": "mydatabase"
     }
 }
