@@ -5,7 +5,7 @@
 
     // rng: http://www.random.org
 
-    var container = document.getElementsByClassName('panel-container')[0];
+    var container = document.getElementsByClassName('canvas')[0];
     var panels = {
         sealevel: {
             data: {
