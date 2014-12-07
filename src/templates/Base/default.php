@@ -13,7 +13,7 @@
     <title>Globathon - <?= $title ?></title>
 </head>
 <body>
-<div class="container">
+<div id="allwrap">
     <?= $this->section('content') ?>
 </div>
 
