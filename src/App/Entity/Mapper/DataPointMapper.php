@@ -2,17 +2,16 @@
 
 namespace App\Entity\Mapper;
 
-use App\Entity\TemperatureDataPoint;
-use App\Value\Mapper\DataPointMapper;
+use App\Entity\DataPoint;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Selectable;
 
-class TemperatureDataPointMapper
+class DataPointMapper
 {
     /**
      * @param array $data
-     * @return TemperatureDataPoint
+     * @return DataPoint
      */
     public static function fromArray($data)
     {
@@ -22,14 +21,20 @@ class TemperatureDataPointMapper
             $id = (int)$data['id'];
         }
 
-        $dataPoint = DataPointMapper::fromArray($data);
+        $type = DataPointTypeMapper::fromArray($data['type']);
 
-        return new TemperatureDataPoint($dataPoint, $id);
+        return new DataPoint(
+            (int)$data['year'],
+            (int)$data['month'],
+            (int)$data['data'],
+            $type,
+            $id
+        );
     }
 
     /**
      * @param array $data
-     * @return Collection|Selectable|TemperatureDataPoint[]
+     * @return Collection|Selectable|DataPoint[]
      */
     public static function multipleFromArray($data)
     {
@@ -43,14 +48,17 @@ class TemperatureDataPointMapper
     }
 
     /**
-     * @param TemperatureDataPoint $temperatureDataPoint
+     * @param DataPoint $dataPoint
      * @return array
      */
-    public static function toArray(TemperatureDataPoint $temperatureDataPoint)
+    public static function toArray(DataPoint $dataPoint)
     {
         return [
-            'dataPoint' => DataPointMapper::toArray($temperatureDataPoint->getDataPoint()),
-            'id' => $temperatureDataPoint->getId()
+            'data' => $dataPoint->getData(),
+            'id' => $dataPoint->getId(),
+            'month' => $dataPoint->getMonth(),
+            'type' => DataPointTypeMapper::toArray($dataPoint->getType()),
+            'year' => $dataPoint->getYear()
         ];
     }
 }

@@ -2,34 +2,28 @@
 
 namespace App\Entity\Repository;
 
+use App\Entity\DataPoint;
 use App\Entity\Repository\Exception\EntityNotFoundException;
 use App\Entity\Repository\Exception\StorageFailureException;
-use App\Entity\TemperatureDataPoint;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Selectable;
 
-interface TemperatureDataPointRepository
+interface DataPointRepository
 {
     /**
      * @param $id
-     * @return TemperatureDataPoint
+     * @return DataPoint
      * @throws EntityNotFoundException
      */
     public function findById($id);
 
     /**
-     * @return Collection|Selectable|TemperatureDataPoint[]
-     */
-    public function findAll();
-
-    /**
-     * @param TemperatureDataPoint $temperatureDataPoint
+     * @param DataPoint $temperatureDataPoint
      * @throws StorageFailureException
      */
-    public function save(TemperatureDataPoint $temperatureDataPoint);
+    public function save(DataPoint $temperatureDataPoint);
 
     /**
-     * @param Collection|TemperatureDataPoint[] $collection
+     * @param Collection|DataPoint[] $collection
      * @throws StorageFailureException
      */
     public function saveGroup($collection);
