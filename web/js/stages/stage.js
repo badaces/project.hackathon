@@ -44,7 +44,7 @@
                         self.assets[asset.name] = d3.select(element)
                             .attr('id', '')
                             .attr('class', 'asset ' + asset.name)
-                            .style('display', 'none');
+                            .style('opacity', '0');
 
                         assetsLoaded++;
 
@@ -68,13 +68,15 @@
                 eventmanager.publish('d3.stage.ready');
             });
         },
+        showClouds: function () {
+            var cloud = this.assets.cloud;
+
+            console.log(cloud);
+        },
         showTerrain: function () {
-            this.assets.terrain1
-                .style('display', 'inline');
-
-            console.log(this.assets.terrain1);
-
-            //this.stage.append(this.assets.terrain1).style('display', 'inline');
+            this.assets.terrain1.transition()
+                .duration(300)
+                .style('opacity', '1');
         }
     };
 
