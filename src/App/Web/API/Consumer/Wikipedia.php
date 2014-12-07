@@ -71,11 +71,20 @@ class Wikipedia extends AbstractConsumer
         $revision = end($revisions);
 
         $article = ArticleMapper::fromArray([
+            'content' => $revision['*'],
             'id' => $articleData['pageid'],
-            'title' => $articleData['title'],
-            'content' => $revision['*']
+            'summary' => $this->getArticleSummary($revision['*']),
+            'title' => $articleData['title']
         ]);
 
         return $article;
+    }
+
+    private function getArticleSummary($content)
+    {
+        $position = mb_strpos($content, '==');
+        $summary = mb_substr($content, 0, $position);
+
+        return $summary;
     }
 }

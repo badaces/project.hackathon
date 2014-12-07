@@ -5,6 +5,11 @@ namespace App\Web\API\Entity\Wikipedia;
 class Article
 {
     /**
+     * @var string
+     */
+    private $content;
+
+    /**
      * @var int
      */
     private $id;
@@ -12,18 +17,19 @@ class Article
     /**
      * @var string
      */
-    private $title;
+    private $summary;
 
     /**
      * @var string
      */
-    private $content;
+    private $title;
 
-    public function __construct($id, $title, $content)
+    public function __construct($content, $id, $summary, $title)
     {
-        $this->id = $id;
-        $this->title = $title;
         $this->content = $content;
+        $this->id = $id;
+        $this->summary = $summary;
+        $this->title = $title;
     }
 
     /**
@@ -40,6 +46,14 @@ class Article
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSummary()
+    {
+        return $this->summary;
     }
 
     /**
