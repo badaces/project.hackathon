@@ -2,6 +2,7 @@
 
 use App\Command\ImportTemperatureDataCommand;
 use App\Command\ImportMethaneDataCommand;
+use App\Command\ImportCo2DataCommand;
 use App\Entity\Repository\DataPointRepository;
 use App\Entity\Repository\DataPointTypeRepository;
 use App\Storage\Mysql\DataPointMysqlRepository;
@@ -69,6 +70,7 @@ $di
     ->toClass(Application::class)
     ->addMethodCall('add', [new ServiceReference(ImportTemperatureDataCommand::class)])
     ->addMethodCall('add', [new ServiceReference(ImportMethaneDataCommand::class)])
+    ->addMethodCall('add', [new ServiceReference(ImportCo2DataCommand::class)])
     ->asShared()
 ;
 
