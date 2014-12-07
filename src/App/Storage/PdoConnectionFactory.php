@@ -13,7 +13,7 @@ class PdoConnectionFactory
         $configuration = $container->get('config');
         $dbConfig = $configuration->get('database');
 
-        $dsn = sprintf('%s:host=%s;dbname=%s', $dbConfig['adapter'], $dbConfig['host'], $dbConfig['dbname']);
+        $dsn = sprintf('%s:host=%s;dbname=%s;charset=utf8', $dbConfig['adapter'], $dbConfig['host'], $dbConfig['dbname']);
 
         return new \PDO($dsn, $dbConfig['username'], $dbConfig['password']);
     }
