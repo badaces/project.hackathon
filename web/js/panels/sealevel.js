@@ -27,7 +27,7 @@
 
             var scaleX = d3.scale.linear()
                 .domain([0, d3.max(this.data)])
-                .range([0, chartWidth]);
+                .range([0, chartWidth - 10]);
 
             var chart = d3.select(this.panel)
                 .append('svg')
@@ -43,7 +43,7 @@
 
             bar.append('rect')
                 .style('fill', 'steelblue')
-                .attr('width', scaleX)
+                .attr('width', function (d) { return d + 10; })
                 .attr('height', barHeight - 1);
 
             bar.append('text')
@@ -54,6 +54,11 @@
                 .attr('y', barHeight / 2)
                 .attr('dy', '0.35em')
                 .text(function (d) { return d; });
+
+            d3.selectAll('rect').transition()
+                .duration(750)
+                .delay(function (d, i) { return i * 50; })
+                .attr('width', function (d) { return scaleX(d) + 10; })
         },
         getPanel: function () {
             this.panel = this.panel || this._d3.createPanel(options.height, options.width);
