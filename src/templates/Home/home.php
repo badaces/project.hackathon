@@ -7,16 +7,15 @@
 </header>
 
 <div id="main-canvas">
-	
 	<div id="stage-wrapper">
-		
+        <?php /*
 		<div class="infographic">
 			<img src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="Bla bla bla">
 		</div>
 
 		<div class="associated-data"></div>
+        */ ?>
 	</div>
-
 </div>
 
 <div id="information-wrapper">
