@@ -13,9 +13,10 @@ class ArticleMapper
     public static function fromArray($data)
     {
         return new Article(
+            $data['content'],
             (int)$data['id'],
-            $data['title'],
-            $data['content']
+            $data['summary'],
+            $data['title']
         );
     }
 }
