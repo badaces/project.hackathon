@@ -35,10 +35,10 @@
 
 <div id="main-canvas-selectors">
 	<ul>
-		<li>Cryosphere</li>
-		<li>Hydrosphere</li>
-		<li>Lithosphere</li>
-		<li>Biosphere</li>
-		<li>Atmosphere</li>
+		<li><span class="label">Cryosphere</span></li>
+		<li><span class="label">Hydrosphere</span></li>
+		<li><span class="label">Lithosphere</span></li>
+		<li><span class="label">Biosphere</span></li>
+		<li><span class="label">Atmosphere</span></li>
 	</ul>
 </div>
