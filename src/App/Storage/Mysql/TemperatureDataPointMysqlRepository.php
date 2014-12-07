@@ -106,7 +106,6 @@ class TemperatureDataPointMysqlRepository implements TemperatureDataPointReposit
                 $params = [];
 
                 if (!$result) {
-                    var_dump($statement->errorInfo());
                     throw new StorageFailureException('Could not save TemperatureDataPoint collection');
                 }
             }
