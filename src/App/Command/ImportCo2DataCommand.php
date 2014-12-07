@@ -58,7 +58,10 @@ class ImportCo2DataCommand extends Command
 
         $dataPointType = null;
         try {
-            $dataPointType = $dataPointTypeRepository->findByName(DataPointType::CO2);
+            $dataPointTypeRepository->findByName(DataPointType::CO2);
+
+            $output->writeln('Data has already been imported.');
+            return;
         } catch (EntityNotFoundException $e) {
             $dataPointType = new DataPointType(DataPointType::CO2);
             $dataPointTypeRepository->save($dataPointType);

@@ -58,7 +58,10 @@ class ImportMethaneDataCommand extends Command
 
         $dataPointType = null;
         try {
-            $dataPointType = $dataPointTypeRepository->findByName(DataPointType::METHANE);
+            $dataPointTypeRepository->findByName(DataPointType::METHANE);
+
+            $output->writeln('Data has already been imported.');
+            return;
         } catch (EntityNotFoundException $e) {
             $dataPointType = new DataPointType(DataPointType::METHANE);
             $dataPointTypeRepository->save($dataPointType);
