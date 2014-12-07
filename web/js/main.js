@@ -17,6 +17,46 @@
     var container = document.getElementsByClassName('panel-container')[0];
 
     // Todo: move each panel into a separated file
+    panels.frito = container.appendChild(panel.cloneNode(true));
+    panels.frito.className = 'frito';
+
+    var sample = d3.select(panels.frito)
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height / 2);
+
+    sample.append('circle')
+        .style('stroke', 'gray')
+        .style('fill', 'white')
+        .attr('r', 40)
+        .attr('cx', 50)
+        .attr('cy', 50)
+        .on('mouseover', function () {
+            d3.select(this)
+                .transition()
+                .duration(250)
+                .attr('r', 42)
+                .style('fill', 'aliceblue');
+        })
+        .on('mouseleave', function () {
+            d3.select(this)
+                .transition()
+                .duration(250)
+                .attr('r', 40)
+                .style('fill', 'white');
+        });
+
+
+
+
+
+
+
+
+
+
+
+    // Todo: move each panel into a separated file
     panels.herbicide = container.appendChild(panel.cloneNode(true));
     panels.herbicide.className = 'herbicide';
 
@@ -42,6 +82,7 @@
             .attr('transform', function (d, i) { return 'translate(' + (i * barWidth) + ', 0)'; });
 
     bar.append('rect')
+        .attr('class', 'bar')
         .attr('y', function (d) { return scaleY(d); })
         .attr('height', function (d) { return chartHeight - scaleY(d); })
         .attr('width', barWidth - 2);
@@ -119,6 +160,11 @@
         .datum(data)
         .attr('class', 'line')
         .attr('d', line);
+
+    d3.selectAll('.bar').transition()
+        .duration(750)
+        .delay(function (d, i) { return i * 50; })
+        .attr('height', function(d) { console.log(d); return d + 20; });
 
 })(hm, d3);
 
