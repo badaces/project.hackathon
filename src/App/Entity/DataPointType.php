@@ -6,6 +6,7 @@ class DataPointType
 {
     const TEMPERATURE = 'temperature';
     const METHANE = 'methane';
+    const CO2 = 'co2';
 
     /**
      * @var int
