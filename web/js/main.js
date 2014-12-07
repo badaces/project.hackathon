@@ -5,8 +5,18 @@
 
     // rng: http://www.random.org
 
-    var canvas = document.getElementsByClassName('canvas')[0];
+    // create a global event manager
+    hm.extend(hm, {eventmanager: new Publisher()});
+
+    var eventmanager = hm.eventmanager;
+    var canvas = document.getElementsByClassName('stage-wrapper')[0];
     var stage = new hm.stages.stage(canvas);
 
-    console.log('stage:', stage);
+    hm.watchMethod(eventmanager, 'publish', function (event) {
+        console.log('published: ', event);
+    });
+
+    eventmanager.subscribe('d3.stage.assets.ready', function () {
+        stage.showTerrain();
+    });
 })(hm, d3);

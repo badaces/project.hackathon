@@ -5,16 +5,15 @@
 <p>Application description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quis explicabo, at totam tempora cumque, qui quaerat praesentium, quod voluptatem tempore aliquam dicta nisi blanditiis debitis soluta, eveniet dolor cum eligendi quas. Expedita nam nulla molestiae corrupti sunt sit earum, numquam temporibus. Repellat rerum omnis repudiandae hic placeat, eligendi impedit, reiciendis quos recusandae eveniet quam deleniti cupiditate perspiciatis, iusto quisquam.</p>
 
 <div id="main-canvas">
-	
 	<div class="stage-wrapper">
-		
+        <?php /*
 		<div class="infographic">
 			<img src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="Bla bla bla">
 		</div>
 
 		<div class="associated-data"></div>
+        */ ?>
 	</div>
-
 </div>
 
 <div id="information-wrapper">
