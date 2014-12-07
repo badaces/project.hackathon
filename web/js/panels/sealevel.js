@@ -2,8 +2,8 @@
     'use strict';
 
     var options = {
-        height: 400,
-        width: 200
+        height: 600,
+        width: 400
     };
 
     var SeaLevel = function (container) {
@@ -50,7 +50,7 @@
                 .style('fill', 'white')
                 .style('font', '9px sans-serif')
                 .style('text-anchor', 'end')
-                .attr('x', function (d) { return scaleX(d) - 3; })
+                .attr('x', function (d) { return scaleX(d) - 4; })
                 .attr('y', barHeight / 2)
                 .attr('dy', '0.35em')
                 .text(function (d) { return d; });
