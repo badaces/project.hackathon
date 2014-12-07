@@ -42,8 +42,9 @@
                         var element = container.appendChild(xml.documentElement);
 
                         self.assets[asset.name] = d3.select(element)
-                            .attr('class', asset.name)
-                            .attr('display', 'none');
+                            .attr('id', '')
+                            .attr('class', 'asset ' + asset.name)
+                            .style('display', 'none');
 
                         assetsLoaded++;
 
@@ -68,7 +69,12 @@
             });
         },
         showTerrain: function () {
+            this.assets.terrain1
+                .style('display', 'inline');
 
+            console.log(this.assets.terrain1);
+
+            //this.stage.append(this.assets.terrain1).style('display', 'inline');
         }
     };
 

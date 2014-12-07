@@ -9,7 +9,7 @@
     hm.extend(hm, {eventmanager: new Publisher()});
 
     var eventmanager = hm.eventmanager;
-    var canvas = document.getElementById('stage-wrapper')[0];
+    var canvas = document.getElementById('stage-wrapper');
     var stage = new hm.stages.stage(canvas);
 
     hm.watchMethod(eventmanager, 'publish', function (event) {
