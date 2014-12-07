@@ -3,6 +3,8 @@
 namespace App\Command;
 
 use App\Command\Exception\MissingFileException;
+use App\Entity\Mapper\TemperatureDataPointMapper;
+use App\Entity\Repository\TemperatureDataPointRepository;
 use CBC\Utility\Configuration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,9 +17,18 @@ class ImportTemperatureDataCommand extends Command
      */
     private $dataFilePath;
 
-    public function __construct(Configuration $configuration)
+    /**
+     * @var TemperatureDataPointRepository
+     */
+    private $temperatureDataPointRepository;
+
+    public function __construct(
+        Configuration $configuration,
+        TemperatureDataPointRepository $temperatureDataPointRepository
+    )
     {
         $this->dataFilePath = $configuration->get('root_path') . '/app/data/GLB.Ts+dSST.txt';
+        $this->temperatureDataPointRepository = $temperatureDataPointRepository;
         parent::__construct();
     }
 
@@ -31,8 +42,15 @@ class ImportTemperatureDataCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $dataPointRepository = $this->temperatureDataPointRepository;
+
         $data = $this->readDataFile();
-        var_dump($data);
+
+        $dataPoints = TemperatureDataPointMapper::multipleFromArray($data);
+
+        foreach ($dataPoints as $dataPoint) {
+            $dataPointRepository->save($dataPoint);
+        }
     }
 
     private function readDataFile()
@@ -42,6 +60,10 @@ class ImportTemperatureDataCommand extends Command
         if (!file_exists($filePath)) {
             throw new MissingFileException(sprintf('The file "%s" does not exist', $filePath));
         }
+
+        $months = array_map(function ($month) {
+            return strtolower(\DateTime::createFromFormat('!m', $month)->format('M'));
+        }, range(1, 12));
 
         $file = fopen($this->dataFilePath, 'r');
 
@@ -67,7 +89,15 @@ class ImportTemperatureDataCommand extends Command
                     $record[$header] = (int)$recordData[$key];
                 }
 
-                $data[] = $record;
+                foreach ($record as $key => $item) {
+                    if (in_array($key, $months, true)) {
+                        $data[] = [
+                            'year' => $record['year'],
+                            'month' => array_search($key, $months, true) + 1,
+                            'data' => $item
+                        ];
+                    }
+                }
             }
 
             // Stop processing once we hit a line containing only 7 spaces.

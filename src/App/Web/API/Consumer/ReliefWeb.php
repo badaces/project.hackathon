@@ -59,6 +59,7 @@ class ReliefWeb extends AbstractConsumer
         $countries = new ArrayCollection();
 
         foreach ($countriesData as $countryData) {
+            // @TODO: Create a CountryMapper that handles the creation of the entity.
             $countries->add(new Country(
                 $countryData['id'],
                 $countryData['score'],
