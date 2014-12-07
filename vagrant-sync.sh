@@ -11,3 +11,6 @@ sudo chown -R vagrant:vagrant /var/www/html
 
 echo 'Ensuring vagrant-sync is executable'
 sudo chmod +x /var/www/html/vagrant-sync.sh
+
+echo 'Compiling scss to css'
+sass --update -f /var/www/html/web/sass/:/var/www/html/web/css

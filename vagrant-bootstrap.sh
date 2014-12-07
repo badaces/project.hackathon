@@ -13,5 +13,3 @@ service apache2 restart
 mysqladmin -u root -proot create hackathon
 
 bash /vagrant/vagrant-sync.sh
-
-sass --update /var/www/html/web/sass/:/var/www/html/web/css
