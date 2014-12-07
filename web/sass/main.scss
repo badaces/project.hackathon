@@ -32,13 +32,6 @@ body {
 
 .infographic {
 	width: 100%; height: 100%;
-
-	img {
-		display: block;
-		width: auto; height: 80%;
-		margin: 7.5% auto 0 auto;
-
-	}
 }
 
 
@@ -63,7 +56,7 @@ body {
 			.icon {
 				display: block;
 				widows: 100%; height: auto;
-
+				
 			}
 
 			.label {
@@ -82,4 +75,19 @@ body {
 			}
 		}
 	}
+}
+
+
+//Controlling the SVG graphics
+
+#stage {
+	width: 45%;
+	position: absolute;
+	top: 50%; left: 27.5%;
+}
+
+.terrain1 {
+	width: 45%;
+	position: absolute;
+	bottom: 50%; left: 27.5%; 
 }
