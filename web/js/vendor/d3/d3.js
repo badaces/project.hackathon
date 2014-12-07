@@ -7827,7 +7827,8 @@
       return arc;
     };
     arc.centroid = function() {
-      var r = (innerRadius.apply(this, arguments) + outerRadius.apply(this, arguments)) / 2, a = (startAngle.apply(this, arguments) + endAngle.apply(this, arguments)) / 2 + d3_svg_arcOffset;
+      var r = (innerRadius.apply(this, arguments) + outerRadius.apply(this, arguments)) / 2,
+          a = (startAngle.apply(this, arguments) + endAngle.apply(this, arguments)) / 2 + d3_svg_arcOffset;
       return [ Math.cos(a) * r, Math.sin(a) * r ];
     };
     return arc;

@@ -16,6 +16,15 @@
             return panel;
         },
         translate: function (x, y) {
+            if (Array.isArray(x)) {
+                var orig = x;
+
+                x = orig[0].toString();
+                y = orig[1].toString();
+            }
+
+            console.log('translate(' + x + ', ' + y + ')');
+
             return 'translate(' + x + ', ' + y + ')';
         }
     };

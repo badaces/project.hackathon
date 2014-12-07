@@ -2,6 +2,16 @@
     'use strict';
 
     var options = {
+        charts: {
+            bar: {
+                height: 200,
+                width: 200
+            },
+            pie: {
+                height: 250,
+                width: 250
+            }
+        },
         height: 600,
         width: 400
     };
@@ -18,24 +28,24 @@
         container: undefined,
         data: undefined,
         panel: undefined,
-        createChart: function () {
+        createBarChart: function () {
             var _d3 = this._d3;
-            var chartHeight = options.height * 0.5;
-            var chartWidth = options.width * 0.8;
+            var height = options.charts.bar.height;
+            var width = options.charts.bar.width;
 
-            var barHeight = chartHeight / this.data.length;
+            var barHeight = height / this.data.bar.length;
 
             var scaleX = d3.scale.linear()
-                .domain([0, d3.max(this.data)])
-                .range([0, chartWidth - 10]);
+                .domain([0, d3.max(this.data.bar)])
+                .range([0, width - 10]);
 
             var chart = d3.select(this.panel)
                 .append('svg')
-                .attr('width', chartWidth)
-                .attr('height', chartHeight);
+                .attr('width', width)
+                .attr('height', height);
 
             var bar = chart.selectAll('g')
-                .data(this.data)
+                .data(this.data.bar)
                 .enter().append('g')
                 .attr('transform', function (d, i) {
                     return _d3.translate(0, (i * barHeight));
@@ -70,6 +80,54 @@
                 .delay(function (d, i) { return i * 50; })
                 .attr('width', function (d) { return scaleX(d); })
         },
+        createPieChart: function () {
+            var _d3 = this._d3;
+            var height = options.charts.pie.height;
+            var width = options.charts.pie.width;
+            var radius = Math.min(width, height) / 2;
+
+            var color = d3.scale.ordinal()
+                .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+            var arc = d3.svg.arc()
+                .outerRadius(radius - 10)
+                .innerRadius(radius / 2);
+
+            var pie = d3.layout.pie()
+                .sort(null)
+                .value(function (d) { return d.amount; });
+
+            var svg = d3.select(this.panel)
+                .append('svg')
+                    .attr('width', width)
+                    .attr('height', height)
+                .append('g')
+                    .attr('transform', _d3.translate(width / 2, height / 2));
+
+            var slice = svg.selectAll('.arc')
+                .data(pie(this.data.pie))
+                .enter().append('g')
+                    .attr('class', 'arc');
+
+            slice.append('path')
+                .attr('d', arc)
+                .style('stroke', 'white')
+                .style('fill', function (d) { return color(d.data.label)});
+
+            slice.append('text')
+                .attr('transform', function (d) {
+                    var centroid = arc.centroid(d);
+
+                    //centroid[0] = centroid[0] + (centroid[0] * 0.4);
+                    //centroid[1] = centroid[1] + (centroid[1] * 0.4);
+
+                    return _d3.translate(centroid);
+                })
+                .attr('dy', '0.35em')
+                .style('font', '9px sans-serif')
+                .style('text-anchor', 'middle')
+                .text(function (d) { return d.data.label; });
+        },
         getPanel: function () {
             this.panel = this.panel || this._d3.createPanel(options.height, options.width);
 
@@ -85,7 +143,8 @@
 
             this.container.appendChild(panel);
             this.setData(data);
-            this.createChart();
+            this.createBarChart();
+            this.createPieChart();
 
             return this;
         }
