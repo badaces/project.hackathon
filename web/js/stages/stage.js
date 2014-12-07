@@ -70,12 +70,19 @@
         },
         showClouds: function () {
             var cloud = this.assets.cloud;
+            var clouds = [[47, 31, 12], [32, 19, 17], [61, 27, 9], [27, 29, 13], [52, 13, 19]];
 
-            var clone = d3.select(this.container.appendChild(cloud.node().cloneNode(true)));
+            hm.each(clouds, hm.proxy(function (i, value) {
+                var clone = d3.select(this.container.appendChild(cloud.node().cloneNode(true)));
 
-            console.log(clone);
-
-            clone.style('opacity', '1');
+                clone
+                    .style('left', value[0] + '%')
+                    .style('top', value[1] + '%')
+                    .style('width', value[2] + '%')
+                    .transition()
+                    .duration(100 * i)
+                    .style('opacity', '1');
+            }, this));
         },
         showTerrain: function () {
             this.assets.terrain1.transition()
