@@ -23,8 +23,6 @@
                 y = orig[1].toString();
             }
 
-            console.log('translate(' + x + ', ' + y + ')');
-
             return 'translate(' + x + ', ' + y + ')';
         }
     };
