@@ -34,10 +34,10 @@
 
 <div id="main-canvas-selectors">
 	<ul>
-		<li class="select-cryosphere"><span class="label">Cryosphere</span></li>
-		<li class="select-hydropsphere"><span class="label">Hydrosphere</span></li>
-		<li class="select-lithosphere"><span class="label">Lithosphere</span></li>
-		<li class="select-biosphere"><span class="label">Biosphere</span></li>
-		<li class="select-atmosphere"><span class="label">Atmosphere</span></li>
+		<li class="select-cryosphere"><span class="icon"></span><span class="label">Cryosphere</span></li>
+		<li class="select-hydrosphere"><span class="icon"></span><span class="label">Hydrosphere</span></li>
+		<li class="select-lithosphere"><span class="icon"></span><span class="label">Lithosphere</span></li>
+		<li class="select-biosphere"><span class="icon"></span><span class="label">Biosphere</span></li>
+		<li class="select-atmosphere"><span class="icon"></span><span class="label">Atmosphere</span></li>
 	</ul>
 </div>

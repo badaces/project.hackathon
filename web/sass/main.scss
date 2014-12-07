@@ -46,7 +46,7 @@ body {
 
 	ul {
 		display: block; 
-		width: 100%; height: 100%;
+		width: 100%; height: 80%; margin-top: 20%;
 
 		li {
 			display: block;
@@ -55,8 +55,9 @@ body {
 
 			.icon {
 				display: block;
-				widows: 100%; height: auto;
-				
+				width: 100%; height: 60%;
+				position: absolute;
+				left: 0; top: 0; z-index: 5;
 			}
 
 			.label {
@@ -65,10 +66,47 @@ body {
 				text-align: center;
 				font-family: 'Roboto Slab';
 				font-size: 1.25em; line-height: 2em; font-weight: 400;
-				color: lighten($bodycolor, 15%);
+				color: rgba(#fff,0);
 				position: absolute; left: 0; bottom: 20px;
+			}
 
-				&:hover {
+			&.select-cryosphere {
+				.icon {
+					background: url('/web/svg/icon_iceberg.svg') no-repeat center center;
+					background-size: contain;
+				}
+			}
+
+			&.select-hydrosphere {
+				.icon {
+					background: url('/web/svg/icon_watermass.svg') no-repeat center center;
+					background-size: contain;
+				}
+			}
+
+			&.select-lithosphere {
+				.icon {
+					background: url('/web/svg/icon_earth.svg') no-repeat center center;
+					background-size: contain;
+				}
+			}
+
+			&.select-biosphere {
+				.icon {
+					background: url('/web/svg/icon_iceberg.svg') no-repeat center center;
+					background-size: contain;
+				}
+			}
+
+			&.select-atmosphere {
+				.icon {
+					background: url('/web/svg/icon_cloud.svg') no-repeat center center;
+					background-size: contain;
+				}
+			}
+
+			&:hover {
+				.label {
 					color: #000;
 					transition: color 0.25s ease-out;
 				}
