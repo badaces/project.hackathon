@@ -1,6 +1,7 @@
 <?php
 
 use App\Command\ImportTemperatureDataCommand;
+use App\Command\ImportMethaneDataCommand;
 use App\Entity\Repository\TemperatureDataPointRepository;
 use App\Storage\Mysql\TemperatureDataPointMysqlRepository;
 use App\Storage\PdoConnectionFactory;
@@ -65,6 +66,7 @@ $di
     ->register(Application::class)
     ->toClass(Application::class)
     ->addMethodCall('add', [new ServiceReference(ImportTemperatureDataCommand::class)])
+    ->addMethodCall('add', [new ServiceReference(ImportMethaneDataCommand::class)])
     ->asShared()
 ;
 
