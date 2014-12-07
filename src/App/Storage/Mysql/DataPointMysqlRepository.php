@@ -3,10 +3,13 @@
 namespace App\Storage\Mysql;
 
 use App\Entity\DataPoint;
+use App\Entity\DataPointType;
 use App\Entity\Mapper\DataPointMapper;
 use App\Entity\Repository\DataPointRepository;
 use App\Entity\Repository\Exception\EntityNotFoundException;
 use App\Entity\Repository\Exception\StorageFailureException;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 
 class DataPointMysqlRepository implements DataPointRepository
 {
@@ -32,7 +35,7 @@ class DataPointMysqlRepository implements DataPointRepository
         $sql  = 'SELECT d.id, d.year, d.month, d.data, t.id as tid, t.name as tname';
         $sql .= ' FROM ' . $this->tableName . ' d';
         $sql .= ' LEFT JOIN data_point_type t ON d.type = t.id';
-        $sql .= ' WHERE id = :id';
+        $sql .= ' WHERE d.id = :id';
 
         $statement = $database->prepare($sql);
 
@@ -54,6 +57,40 @@ class DataPointMysqlRepository implements DataPointRepository
         ];
 
         return DataPointMapper::fromArray($record);
+    }
+
+    public function findByType(DataPointType $type)
+    {
+        $database = $this->database;
+
+        $sql  = 'SELECT d.id, d.year, d.month, d.data, t.id as tid, t.name as tname';
+        $sql .= ' FROM ' . $this->tableName . ' d';
+        $sql .= ' LEFT JOIN data_point_type t ON d.type = t.id';
+        $sql .= ' WHERE d.type = :type';
+
+        $statement = $database->prepare($sql);
+
+        $statement->execute([
+            ':type' => $type->getId()
+        ]);
+
+        if ($statement->rowCount() === 0) {
+            throw new EntityNotFoundException(sprintf(
+                'Could not find DataPoint entity by type "%s"',
+                $type->getName()
+            ));
+        }
+
+        $records = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        foreach ($records as &$record) {
+            $record['type'] = [
+                'id' => $record['tid'],
+                'name' => $record['tname']
+            ];
+        }
+
+        return DataPointMapper::multipleFromArray($records);
     }
 
     public function save(DataPoint $dataPoint)

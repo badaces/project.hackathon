@@ -42,7 +42,7 @@ class Application implements ContainerAwareInterface
         $urlMatcher = $this->urlMatcher;
 
         try {
-            $route = $urlMatcher->match($request->getRequestUri());
+            $route = $urlMatcher->match($request->getPathInfo());
             $actionName = sprintf('App\Web\Action\%sAction', $route['controller']);
 
             /** @var ActionInterface $action */

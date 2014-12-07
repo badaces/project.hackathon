@@ -48,6 +48,21 @@ class DataPointMapper
     }
 
     /**
+     * @param DataPoint[] $dataPoints
+     * @return array
+     */
+    public static function multipleToArray($dataPoints)
+    {
+        $result = [];
+
+        foreach ($dataPoints as $dataPoint) {
+            $result[] = self::toArray($dataPoint);
+        }
+
+        return $result;
+    }
+
+    /**
      * @param DataPoint $dataPoint
      * @return array
      */

@@ -58,7 +58,10 @@ class ImportTemperatureDataCommand extends Command
 
         $dataPointType = null;
         try {
-            $dataPointType = $dataPointTypeRepository->findByName(DataPointType::TEMPERATURE);
+            $dataPointTypeRepository->findByName(DataPointType::TEMPERATURE);
+
+            $output->writeln('Data has already been imported.');
+            return;
         } catch (EntityNotFoundException $e) {
             $dataPointType = new DataPointType(DataPointType::TEMPERATURE);
             $dataPointTypeRepository->save($dataPointType);
