@@ -71,7 +71,11 @@
         showClouds: function () {
             var cloud = this.assets.cloud;
 
-            console.log(cloud);
+            var clone = d3.select(this.container.appendChild(cloud.node().cloneNode(true)));
+
+            console.log(clone);
+
+            clone.style('opacity', '1');
         },
         showTerrain: function () {
             this.assets.terrain1.transition()
