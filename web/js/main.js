@@ -17,6 +17,16 @@
     });
 
     eventmanager.subscribe('d3.stage.assets.ready', function () {
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open('GET', '/statistics?type=co2');
+        xmlhttp.send();
+
+        console.log(xmlhttp);
+
+
+
+
         stage.showTerrain();
         stage.showClouds();
     });
