@@ -68,9 +68,8 @@ class ImportMethaneDataCommand extends Command
 
         $data = $this->readDataFile($dataPointType);
         $dataPoints = DataPointMapper::multipleFromArray($data);
-        var_dump($dataPoints);
 
-//        $dataPointRepository->saveGroup($dataPoints);
+        $dataPointRepository->saveGroup($dataPoints);
     }
 
     private function readDataFile($type)
@@ -91,7 +90,7 @@ class ImportMethaneDataCommand extends Command
                 $data[] = [
                     'year' => (int)$recordData[1],
                     'month' => (int)$recordData[2],
-                    'data' => (float)$recordData[3] / 1000, // Convert to PPM from PPB
+                    'data' => (float)$recordData[3] / 1000, // Convert from PPB to PPM
                     'type' => $type
                 ];
             }

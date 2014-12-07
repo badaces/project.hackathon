@@ -5,7 +5,7 @@ namespace App\Entity;
 class DataPoint
 {
     /**
-     * @var int
+     * @var float
      */
     private $data;
 
@@ -39,7 +39,7 @@ class DataPoint
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getData()
     {
