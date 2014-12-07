@@ -1,0 +1,12 @@
+{
+    "api": {
+        "keys": {
+            "mashape": "BObSUB0z9XmshBSPvsgMVkm9fdXWp1vFkGijsnSM88keDuZAKN"
+        }
+    },
+    "data": {
+        "giis": {
+            "url": "http://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.txt"
+        }
+    }
+}

@@ -9,7 +9,7 @@ class ConfigurationFactory
     public static function create()
     {
         $rootPath = realpath(__DIR__ . '/../../../');
-        $configPath = $rootPath . '/app-config.json';
+        $configPath = $rootPath . '/app/app-config.json';
 
         $configData = json_decode(file_get_contents($configPath), true);
 
