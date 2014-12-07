@@ -11,7 +11,7 @@
 
 <?php // Interactive Panels ?>
 
-<script src="<?= $this->asset('js/panels/sealevel.js') ?>"></script>
+<script src="<?= $this->asset('js/stages/stage.js') ?>"></script>
 
 <?php // Single Javascript Entry Point ?>
 
