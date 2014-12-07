@@ -64,6 +64,7 @@
                 var element = container.appendChild(xml.documentElement);
 
                 self.stage = d3.select(element).attr('id', 'stage');
+                self.stage.style('opacity', '0');
 
                 eventmanager.publish('d3.stage.ready');
             });
@@ -79,15 +80,12 @@
                     .style('left', value[0] + '%')
                     .style('top', value[1] + '%')
                     .style('width', value[2] + '%')
-                    .transition()
-                    .duration(100 * i)
                     .style('opacity', '1');
             }, this));
         },
         showTerrain: function () {
-            this.assets.terrain1.transition()
-                .duration(300)
-                .style('opacity', '1');
+            this.stage.style('opacity', '1');
+            this.assets.terrain1.style('opacity', '1');
         }
     };
 
