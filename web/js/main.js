@@ -19,13 +19,19 @@
 
     var selectors = {
         cryosphere: {
-            class: ''
+            //stage: document.getElementsByClassName('stage-CO2')[0],
+            //scene: document.getElementsByClassName('scene-CO2')[0],
+            //elements: [clouds]
         },
         hydrosphere: {
-            class: ''
+            //stage: document.getElementsByClassName('stage-CO2')[0],
+            //scene: document.getElementsByClassName('scene-CO2')[0],
+            //elements: [clouds]
         },
         lithosphere: {
-            class: ''
+            //stage: document.getElementsByClassName('stage-CO2')[0],
+            //scene: document.getElementsByClassName('scene-CO2')[0],
+            //elements: [clouds]
         },
         atmosphere: {
             stage: document.getElementsByClassName('stage-CO2')[0],
@@ -37,7 +43,9 @@
     var hideElements = function () {
         hm.each([stages, scenes, clouds], function (i, collection) {
             hm.each(collection, function (i, element) {
-                element.style.opacity = '0';
+                if (i != 'length') {
+                    element.style.opacity = '0';
+                }
             });
         });
     };
@@ -53,7 +61,9 @@
 
         hm.each(selectors[selector].elements, function (i, collection) {
             hm.each(collection, function (i, element) {
-                element.style.opacity = 1;
+                if (i != 'length') {
+                    element.style.opacity = '1';
+                }
             });
         });
     });
@@ -68,53 +78,42 @@
         oldElement: document.getElementsByClassName('select-hydrosphere')[0]
     });
 
+    // set up cloud CO2 emissions data
+    // ===============================
+
+    var cloudRequest = new XMLHttpRequest();
+    cloudRequest.responseType = 'json';
+    cloudRequest.onreadystatechange = function () {
+        if (cloudRequest.readyState === 4 && cloudRequest.status === 200) {
+            // consume cloud data
+            var data = cloudRequest.response.result;
+            var clouds = {
+                1960: {entries: 0, data: 0},
+                1970: {entries: 0, data: 0},
+                1980: {entries: 0, data: 0},
+                1990: {entries: 0, data: 0},
+                2000: {entries: 0, data: 0},
+                2010: {entries: 0, data: 0}
+            };
+
+            hm.each(data, function (i, record) {
+                if (record.year >= 1960) {
+                    var point = record.year.toString().substring(0, 3) + '0';
+
+                    clouds[point].entries += 1;
+                    clouds[point].data += record.data;
+                }
+            });
+
+            // display cloud data
+            console.log(clouds);
+        }
+    };
+
+    cloudRequest.open('GET', '/statistics?type=co2', true);
+    cloudRequest.send();
 
 
 
 
-
-    //$.ajax({
-    //    url: '/statistics?type=co2',
-    //    success: function (data) {
-    //        data = data.result;
-    //
-    //
-    //        var clouds = {
-    //            1960: {entries: 0, data: 0},
-    //            1970: {entries: 0, data: 0},
-    //            1980: {entries: 0, data: 0},
-    //            1990: {entries: 0, data: 0},
-    //            2000: {entries: 0, data: 0},
-    //            2010: {entries: 0, data: 0}
-    //        };
-    //
-    //        hm.each(data, function (i, record) {
-    //            if (record.year >= 1960) {
-    //                var point = record.year.toString().substring(0, 3) + '0';
-    //
-    //                clouds[point].entries += 1;
-    //                clouds[point].data += record.data;
-    //            }
-    //        });
-    //
-    //        console.log(clouds);
-    //    },
-    //    error: function () {
-    //        console.log('unable to load co2 data');
-    //    }
-    //});
-
-    //eventmanager.subscribe('d3.stage.assets.ready', function () {
-    //    stage.showTerrain();
-    //
-    //    $.ajax({
-    //        url: '/statistics?type=co2',
-    //        success: function (data) {
-    //            stage.showClouds(data.result);
-    //        },
-    //        error: function () {
-    //            console.log('unable to load co2 data');
-    //        }
-    //    });
-    //});
 })(hm, d3, jQuery);
