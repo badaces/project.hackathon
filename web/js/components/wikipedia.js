@@ -23,6 +23,8 @@
             var url = this.options.endpoint + '?title=' + encodeURI(name);
 
             var request = new XMLHttpRequest();
+            request.open('GET', url, true);
+
             request.responseType = 'json';
             request.onreadystatechange = hm.proxy(function () {
                 if (request.readyState === 4) {
@@ -39,10 +41,21 @@
                 }
             }, this);
 
-            request.open('GET', url, true);
             request.send();
         }
     };
 
+    var instance;
+    var createInstance = function (options) {
+        if ($.isUndefined(instance)) {
+            instance = new Wikipedia($.eventManager(), options);
+        } else {
+            instance.setOptions(options);
+        }
+
+        return instance;
+    };
+
     $.extend($, {classes: {Wikipedia: Wikipedia}});
+    $.extend($, {wikipedia: createInstance});
 })(hm);

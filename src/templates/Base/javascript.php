@@ -7,8 +7,10 @@
 
 <?php // Components ?>
 
+<script src="<?= $this->asset('js/components/global-event-manager.js') ?>"></script>
 <script src="<?= $this->asset('js/components/d3helper.js') ?>"></script>
 <script src="<?= $this->asset('js/components/wikipedia.js') ?>"></script>
+<script src="<?= $this->asset('js/components/canvas-selector.js') ?>"></script>
 
 <?php // Interactive Panels ?>
 
