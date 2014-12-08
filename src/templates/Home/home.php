@@ -15,12 +15,63 @@
 			</div>
 			<div class="scene-wrapper scene-CO2">
 				<img class="scene scene-CO2" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
-				<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-				<img class="cloud cloud-CO2-02" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-				<img class="cloud cloud-CO2-03" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-				<img class="cloud cloud-CO2-04" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-				<img class="cloud cloud-CO2-05" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-				<img class="cloud cloud-CO2-06" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				<div class="data-holder cloud-CO2-01">
+					<div class="label">
+						<span class="legend"><span class="label"></span></span>
+						<span class="stats"></span>
+						<span class="unit"></span>
+					</div>
+					<div class="info-popbox"></div>
+					<img class="cloud" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				</div>
+				<div class="data-holder cloud-CO2-02">
+					<div class="label">
+						<span class="legend"><span class="label"></span></span>
+						<span class="stats"></span>
+						<span class="unit"></span>
+					</div>
+					<div class="info-popbox"></div>
+					<img class="cloud" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				</div>
+				<div class="data-holder cloud-CO2-03">
+					<div class="label">
+						<span class="legend"><span class="label"></span></span>
+						<span class="stats"></span>
+						<span class="unit"></span>
+					</div>
+					<div class="info-popbox"></div>
+					<img class="cloud" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				</div>
+				<div class="data-holder cloud-CO2-04">
+					<div class="label">
+						<span class="legend"><span class="label"></span></span>
+						<span class="stats"></span>
+						<span class="unit"></span>
+					</div>
+					<div class="info-popbox"></div>
+					<img class="cloud" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				</div>
+				<div class="data-holder cloud-CO2-05">
+					<div class="label">
+						<span class="legend"><span class="label"></span></span>
+						<span class="stats"></span>
+						<span class="unit"></span>
+					</div>
+					<div class="info-popbox"></div>
+					<img class="cloud" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				</div>
+				<div class="data-holder cloud-CO2-06">
+					<div class="label">
+						<span class="legend"><span class="label">Years</span>1960-69</span>
+						<span class="stats">3202.85</span>
+						<span class="unit">ppm</span>
+					</div>
+					<div class="info-popbox">
+						<h3>Headline here</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam iste atque laborum ratione, culpa deserunt ut, commodi. Omnis illum deleniti quisquam nisi deserunt iure quidem, nulla quas necessitatibus, doloremque nihil!</p>
+					</div>
+					<img class="cloud" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				</div>
 			</div>
 		</div>
 
