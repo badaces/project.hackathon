@@ -12,10 +12,6 @@
 <script src="<?= $this->asset('js/components/wikipedia.js') ?>"></script>
 <script src="<?= $this->asset('js/components/canvas-selector.js') ?>"></script>
 
-<?php // Interactive Panels ?>
-
-<script src="<?= $this->asset('js/stages/stage.js') ?>"></script>
-
 <?php // Single Javascript Entry Point ?>
 
 <script src="<?= $this->asset('js/main.js') ?>"></script>
