@@ -69,6 +69,7 @@
 					<div class="info-popbox">
 						<h3>Headline here</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam iste atque laborum ratione, culpa deserunt ut, commodi. Omnis illum deleniti quisquam nisi deserunt iure quidem, nulla quas necessitatibus, doloremque nihil!</p>
+						<a href="" class="close-action"></a>
 					</div>
 					<img class="cloud" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
 				</div>
