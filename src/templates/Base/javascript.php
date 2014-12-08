@@ -11,6 +11,7 @@
 <script src="<?= $this->asset('js/components/d3helper.js') ?>"></script>
 <script src="<?= $this->asset('js/components/wikipedia.js') ?>"></script>
 <script src="<?= $this->asset('js/components/canvas-selector.js') ?>"></script>
+<script src="<?= $this->asset('js/components/information-panel.js') ?>"></script>
 
 <?php // Interactive Panels ?>
 
