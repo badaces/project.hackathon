@@ -1,13 +1,13 @@
 ;(function (hm, d3, $) {
     'use strict';
 
-    console.log('hm:', hm);
+    //console.log('hm:', hm);
 
     var eventmanager = hm.eventManager();
 
-    hm.watchMethod(eventmanager, 'publish', function (event) {
-        console.log('published: ', event);
-    });
+    //hm.watchMethod(eventmanager, 'publish', function (event) {
+    //    console.log('published: ', event);
+    //});
 
     var canvas = document.getElementById('stage-wrapper');
     var stages = document.getElementsByClassName('stage');
@@ -31,8 +31,8 @@
             elements: undefined
         },
         atmosphere: {
-            stage: document.getElementsByClassName('stage-CO2')[0],
-            scene: document.getElementsByClassName('scene-CO2')[0],
+            stage: document.getElementsByClassName('stage-CO2-img')[0],
+            scene: document.getElementsByClassName('scene-CO2-img')[0],
             elements: [clouds]
         }
     };
@@ -40,7 +40,7 @@
     var hideElements = function () {
         hm.each([stages, scenes, clouds], function (i, collection) {
             hm.each(collection, function (i, element) {
-                if (i != 'length') {
+                if (i !== 'length') {
                     element.style.opacity = '0';
                 }
             });
@@ -59,7 +59,7 @@
 
             hm.each(selectors[selector].elements, function (i, collection) {
                 hm.each(collection, function (i, element) {
-                    if (i != 'length') {
+                    if (i !== 'length') {
                         element.style.opacity = '1';
                     }
                 });
@@ -90,26 +90,46 @@
             // consume CO2 data
             var data = CO2Request.response.result;
 
-            var clouds = {
-                1960: {entries: 0, data: 0},
-                1970: {entries: 0, data: 0},
-                1980: {entries: 0, data: 0},
-                1990: {entries: 0, data: 0},
-                2000: {entries: 0, data: 0},
-                2010: {entries: 0, data: 0}
+            var CO2 = {
+                1960: {entries: 0, data: 0, selector: 'cloud-CO2-01'},
+                1970: {entries: 0, data: 0, selector: 'cloud-CO2-02'},
+                1980: {entries: 0, data: 0, selector: 'cloud-CO2-03'},
+                1990: {entries: 0, data: 0, selector: 'cloud-CO2-04'},
+                2000: {entries: 0, data: 0, selector: 'cloud-CO2-05'},
+                2010: {entries: 0, data: 0, selector: 'cloud-CO2-06'}
             };
 
             hm.each(data, function (i, record) {
                 if (record.year >= 1960) {
                     var point = record.year.toString().substring(0, 3) + '0';
 
-                    clouds[point].entries += 1;
-                    clouds[point].data += record.data;
+                    CO2[point].entries += 1;
+                    CO2[point].data += record.data;
                 }
             });
 
             // display CO2 data
-            console.log(clouds);
+            hm.each(clouds, function (i, cloud) {
+                if (i !== 'length') {
+                    var selector = cloud.className.match(/cloud-\S+/g)[0];
+                    var info = {};
+
+                    hm.each(CO2, function (i, result) {
+                        if (result.selector === selector) {
+                            info = result;
+                            info.year = i;
+                        }
+                    });
+
+                    cloud.getElementsByClassName('stats')[0].innerHTML = Math.round(info.data * 100) / 100;
+                    cloud.getElementsByClassName('unit')[0].innerHTML = 'ppm';
+
+                    var finalYear = info.year === '2010' ? '13' : (+info.year + 9).toString().substring(2, 4);
+
+                    cloud.getElementsByClassName('legend')[0].innerHTML =
+                        '<span class="label">Years</span>' + info.year + '-' + finalYear;
+                }
+            });
         }
     };
 
