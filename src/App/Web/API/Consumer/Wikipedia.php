@@ -5,6 +5,7 @@ namespace App\Web\API\Consumer;
 use App\Web\API\Entity\Wikipedia\Article;
 use App\Web\API\Entity\Wikipedia\Mapper\ArticleMapper;
 use App\Web\API\Exception\DataNotFoundException;
+use App\Web\API\Exception\InvalidArgumentException;
 use Guzzle\Http\Client;
 
 class Wikipedia extends AbstractConsumer
@@ -34,10 +35,15 @@ class Wikipedia extends AbstractConsumer
     /**
      * @param string $name
      * @return Article
+     * @throws InvalidArgumentException
      * @throws DataNotFoundException
      */
     public function getArticleByName($name)
     {
+        if (!is_string($name) || strlen($name) === 0) {
+            throw new InvalidArgumentException('$name must be a string');
+        }
+
         $client = $this->client;
 
         $query = array_merge($this->defaultQuery, [
