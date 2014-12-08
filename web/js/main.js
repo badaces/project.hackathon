@@ -126,7 +126,8 @@
             // consume CH4 data
             var data = CH4Request.response.result;
 
-            console.log(data);
+            // display CH4 data
+            //console.log(data);
         }
     };
 
