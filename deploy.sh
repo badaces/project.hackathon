@@ -54,12 +54,13 @@ update() {
 
         echo 'update: Cloning repository'
         git clone $GIT_URL .
-
-        echo 'update: Setting deploy.sh as executable'
-        chmod +x deploy.sh
     fi
 
+    echo 'update: Pulling latest repository changes'
     git pull
+
+    echo 'update: Setting deploy.sh as executable'
+    chmod +x deploy.sh
 }
 
 deploy() {
