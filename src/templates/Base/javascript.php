@@ -8,6 +8,7 @@
 <?php // Components ?>
 
 <script src="<?= $this->asset('js/components/d3helper.js') ?>"></script>
+<script src="<?= $this->asset('js/components/wikipedia.js') ?>"></script>
 
 <?php // Interactive Panels ?>
 
