@@ -8,7 +8,7 @@ While there are an ever increasing number of resources explaining climate change
 
 [![Koding Hackathon](/img/screenshot1.jpg "lorem ipsum")]
 
-![Koding](https://koding.com/a/site.landing/images/slideshow/2x/ss-terminal.png "Koding")
+![Koding](https://github.com/badaces/project.hackathon/blob/master/img/screenshot1.jpg "Koding")
 ![Koding](https://koding.com/a/site.landing/images/slideshow/2x/ss-ide.png "Koding")
 
 ## APIs used
