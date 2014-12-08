@@ -1,1 +1,10 @@
-* text=auto eol=lf
+* text=auto
+*.php eol=lf
+*.js eol=lf
+*.txt eol=lf
+*.json eol=lf
+*.yml eol=lf
+*.sh eol=lf
+*.md eol=lf
+*.lock eol=lf
+*.htaccess eol=lf
