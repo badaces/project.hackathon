@@ -77,17 +77,17 @@
         oldElement: undefined
     });
 
-    // set up cloud CO2 emissions data
+    // set up CO2 emissions data
     // ===============================
 
-    var cloudRequest = new XMLHttpRequest();
+    var CO2Request = new XMLHttpRequest();
 
-    cloudRequest.open('GET', '/statistics?type=co2', true);
-    cloudRequest.responseType = 'json';
-    cloudRequest.onreadystatechange = function () {
-        if (cloudRequest.readyState === 4 && cloudRequest.status === 200) {
-            // consume cloud data
-            var data = cloudRequest.response.result;
+    CO2Request.open('GET', '/statistics?type=co2', true);
+    CO2Request.responseType = 'json';
+    CO2Request.onreadystatechange = function () {
+        if (CO2Request.readyState === 4 && CO2Request.status === 200) {
+            // consume CO2 data
+            var data = CO2Request.response.result;
 
             var clouds = {
                 1960: {entries: 0, data: 0},
@@ -107,11 +107,30 @@
                 }
             });
 
-            // display cloud data
+            // display CO2 data
             console.log(clouds);
         }
     };
 
-    cloudRequest.send();
+    CO2Request.send();
+
+    // set up CH4 emissions data
+    // =============================
+
+    var CH4Request = new XMLHttpRequest();
+
+    CH4Request.open('GET', '/statistics?type=methane', true);
+    CH4Request.responseType = 'json';
+    CH4Request.onreadystatechange = function () {
+        if (CH4Request.readyState === 4 && CH4Request.status === 200) {
+            // consume CH4 data
+            var data = CH4Request.response.result;
+
+            console.log(data);
+        }
+    };
+
+    CH4Request.send();
+
 
 })(hm, d3, jQuery);
