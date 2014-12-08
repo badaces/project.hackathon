@@ -13,6 +13,7 @@
     var stages = document.getElementsByClassName('stage');
     var scenes = document.getElementsByClassName('scene');
     var clouds = document.getElementsByClassName('cloud');
+    var bubble = document.getElementsByClassName('');
 
     var selectors = {
         cryosphere: {
@@ -38,6 +39,8 @@
     };
 
     var hideElements = function () {
+
+
         hm.each([stages, scenes, clouds], function (i, collection) {
             hm.each(collection, function (i, element) {
                 if (i !== 'length') {
@@ -61,9 +64,13 @@
                 hm.each(collection, function (i, element) {
                     if (i !== 'length') {
                         d3.select(element).transition()
-                            .delay(40 * i)
+                            .delay(60 * i)
                             .duration(600)
                             .style('opacity', '1');
+
+                        if (i === '5') {
+                            element.style.opacity = '1';
+                        }
                     }
                 });
             });
