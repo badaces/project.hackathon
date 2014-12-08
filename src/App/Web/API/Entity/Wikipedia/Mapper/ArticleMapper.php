@@ -19,4 +19,18 @@ class ArticleMapper
             $data['title']
         );
     }
+
+    /**
+     * @param Article $article
+     * @return array
+     */
+    public static function toArray(Article $article)
+    {
+        return [
+            'content' => $article->getContent(),
+            'id' => $article->getId(),
+            'summary' => $article->getSummary(),
+            'title' => $article->getTitle()
+        ];
+    }
 }
