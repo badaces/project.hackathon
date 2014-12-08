@@ -85,10 +85,8 @@
 
 <div id="information-wrapper">
 	<div class="info-injector">
-		<h2>Greenhouse Effect</h2>
-		<p>Introduction and description of the subject lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae magnam, blanditiis, quae sint aspernatur voluptatum veniam unde corporis vero harum. Inventore facere vel repellendus mollitia laboriosam quis expedita voluptate voluptatem repudiandae, hic quia porro, ab odio aspernatur.</p>
-		<p>Tetur adipisicing elit. Odit sit, fuga saepe odio impedit aperiam magnam nulla voluptas sequi dolor et deserunt, deleniti tempora quas libero eligendi recusandae id praesentium! Nostrum at iusto dignissimos necessitatibus distinctio atque minus autem possimus enim, officia ratione beatae magnam ea. Vitae autem labore pariatur.</p>
-		<p>Odit sit, fuga saepe odio impedit aperiam magnam nulla voluptas sequi dolor et deserunt, deleniti tempora quas libero eligendi recusandae id praesentium! Nostrum at iusto dignissimos necessitatibus distinctio atque minus autem possimus enim, officia ratione beatae magnam ea. Vitae autem labore pariatur.</p>
+		<h2></h2>
+		<p></p>
 		<p class="source-caption">Wikipedia</p>
 	</div>
 
