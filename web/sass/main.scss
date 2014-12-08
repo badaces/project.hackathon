@@ -82,30 +82,6 @@ p {
 	}
 }
 
-#main-canvas {
-	width: 65%; height: 50%; max-height: 50%;
-	position: fixed; left: 0; top: 25%;
-	overflow: hidden;
-
-	.stage-wrapper {
-		width: 100%; height: 100%;
-		overflow: hidden;
-		position: relative;
-	}
-
-	@include responsive($media: 'phone-tablet') {
-		width: 100%; height: 420px; max-height: 420px;
-		margin-top: 120px; padding-top: 80px;
-		position: static;
-		overflow: hidden;
-	}
-}
-
-.infographic {
-	width: 100%; height: 100%;
-}
-
-
 header {
 	display: none;
 }
@@ -147,24 +123,26 @@ header {
 
 #main-canvas-selectors {
 	display: block;
-	width: 60%; height: 100px;
-	position: fixed; left: 0; bottom: 0;
+	width: 60%; height: 120px;
+	position: fixed; left: 0; bottom: 0; z-index: 50;
+	background: rgba(#fff,0.95);
+
 
 	ul {
 		display: block; 
 		width: 80%; height: 100%;
-		margin: 0 auto;
+		margin: 20px auto 0 auto;
 
 		li {
 			display: block;
-			width: 25%; height: 100%; overflow: hidden; float: left; position: relative;
+			width: 25%; height: 100%; float: left; position: relative;
 			cursor: pointer;
 
 			.icon {
 				display: block;
-				width: 100%; height: 60%;
+				width: 100%; height: 50%;
 				position: absolute;
-				left: 0; top: 0; z-index: 5;
+				left: 0; top: 20px; z-index: 5;
 			}
 
 			.label {
@@ -174,7 +152,7 @@ header {
 				font-family: 'Roboto Slab';
 				font-size: 0.75em; line-height: 2em; font-weight: 400;
 				color: rgba(#fff,0);
-				position: absolute; left: 0; bottom: 10px;
+				position: absolute; left: 0; top: -10px;
 			}
 
 			&.select-cryosphere {
@@ -223,10 +201,20 @@ header {
 
 	@include responsive($media: 'phone-tablet') {
 		width: 100%;
-		bottom: auto; top: 30px;
+		bottom: auto; top: 0;
 
 		ul {
-			width: 100%;
+			width: 100%; margin: 0;
+
+			li {
+				.icon {
+					top: 18px;
+				}
+
+				.label {
+					top: 80px;
+				}
+			}
 		}
 	}
 }
@@ -234,24 +222,131 @@ header {
 
 //Stages & Scenes
 
-.stage {
-	width: 45%; max-width: 395px; min-width: 290px;
-	position: absolute;
-	top: 60%; left: 27.5%;
 
-	&.stage-CO2 {
-		
+#main-canvas {
+	width: 65%; height: 622px;
+	position: fixed; left: 0; top: 50%; margin-top: -311px;
+
+	@include responsive($media: 'phone-tablet') {
+		width: 100%; height: 100%;
+		position: static; margin: 0;
 	}
 }
 
-.scene {
-	width: 45%; max-width: 395px; min-width: 290px;
+.infographic {
+	width: 100%; height: 622px; position: relative;
+
+
+	@include responsive($media: 'phone') {
+		height: 190px; margin-top: 380px;
+	}
+	 
+	@include responsive($media: 'tablet-portrait') {
+		height: 200px; margin-top: 500px;
+	}
+}
+
+.stage-wrapper {
+	width: 420px; height: 200px;
 	position: absolute;
-	bottom: 40%; left: 27.5%; 
+	left: 50%; margin-left: -210px;
+	top: 60%;
+
+	.stage {
+		width: 100%; height: 100%;
+		position: relative;
+	}
+
+	@include responsive($media: 'phone') {
+		width: 260px; height: 124px;
+		margin-left: -130px;
+		top: 30%;
+	}
+	 
+	@include responsive($media: 'tablet-portrait') {
+		width: 320px; height: 152px;
+		margin-left: -160px;
+		top: 30%;
+	}
+}
+
+.scene-wrapper {
+	width: 420px;
+	position: absolute;
+	left: 50%; margin-left: -210px;
+	bottom: 40%;
+
+	.scene {
+		width: 100%; height: 100%;
+		position: relative;
+	}
+
+	&.scene-CO2 {
+		height: 222px;
+	}
+
+	@include responsive($media: 'phone') {
+		width: 260px; 
+		margin-left: -130px;
+		bottom: 70%;
+
+		&.scene-CO2 {
+			height: 137px;
+		}
+	}
+	 
+	@include responsive($media: 'tablet-portrait') {
+		width: 320px; 
+		margin-left: -160px;
+		bottom: 70%;
+
+		&.scene-CO2 {
+			height: 169px;
+		}
+	}
 }
 
 .cloud {
-	display: none;
+	position: absolute;
+	cursor: pointer;
+
+	&.cloud-CO2-01 {
+		width: 24%;
+		top: -94.5945946%;
+		right: -7.14285714%;
+	}
+
+	&.cloud-CO2-02 {
+		width: 28%;
+		top: 4.5045045%;
+		left: 21.4285714%;
+	}
+
+	&.cloud-CO2-03 {
+		width: 32%;
+		top: -108.108108%;
+		left: 9.52380952%;
+	}
+
+	&.cloud-CO2-04 {
+		width: 40%;
+		top: -67.5675676%;
+		right: 19.047619%;
+	}
+
+	&.cloud-CO2-05 {
+		width: 45%;
+		top: -58.5585586%;
+		left: -11.9047619%;
+	}
+	
+	&.cloud-CO2-06 {
+		width: 50%;
+		top: -22.5225225%;
+		right: -11.9047619%;
+	}
+
+
 }
 
 
