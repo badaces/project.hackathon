@@ -38,6 +38,6 @@ class AssetResolverExtension implements ExtensionInterface
             $actualPath = substr($actualPath, 1);
         }
 
-        return sprintf('/web/%s', $actualPath);
+        return sprintf($newPath, $actualPath);
     }
 }
