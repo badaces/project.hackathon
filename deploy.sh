@@ -69,14 +69,19 @@ update() {
 deploy() {
     cd $ROOT_DIR
 
+    echo 'deploy: Installing app-config.json file'
+    cp ~/web-config/app-config.json $ROOT_DIR/app
+
     echo 'deploy: Installing composer dependencies'
     composer install
 
-    echo 'deploy: '
-    sass --update -f /var/www/html/web/sass/:/var/www/html/web/css
+    echo 'deploy: Compiling SASS'
+    sass --update -f $ROOT_DIR/web/sass/:$ROOT_DIR/web/css
 
+    echo 'deploy: Running database migrations'
     bin/phinx migrate
 
+    echo 'deploy: Running data imports'
     php app/console.php import:temperature_data
     php app/console.php import:methane_data
     php app/console.php import:co2_data
