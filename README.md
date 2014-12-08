@@ -6,7 +6,8 @@ While there are an ever increasing number of resources explaining climate change
 
 ## Screenshots
 
-[![Koding Hackathon](/img/screenshot1.jpg "lorem ipsum")]
+![Koding Hackathon](/img/screenshot1.jpg)
+![Koding Hackathon](/img/screenshot2.jpg)
 
 ![Koding](https://github.com/badaces/project.hackathon/blob/master/img/screenshot1.jpg "Koding")
 ![Koding](https://koding.com/a/site.landing/images/slideshow/2x/ss-ide.png "Koding")
