@@ -14,11 +14,11 @@
 				<img class="stage stage-CO2-img" src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="">
 			</div>
 			<div class="scene-wrapper scene-CO2">
-				<img class="scene scene-CO2" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
+				<img class="scene scene-CO2-img" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
 				<!-- <div class="greenhouse-effect">
 					<img class="scene scene-CO2" src="/web/svg/greenhouse_bubble.png" width="100%" height="auto" alt="">
 				</div> -->
-				<div class="data-holder cloud-CO2-01">
+				<div class="data-holder cloud cloud-CO2-01">
 					<div class="label">
 						<span class="legend"><span class="label"></span></span>
 						<span class="stats"></span>
@@ -65,9 +65,9 @@
 				</div>
 				<div class="data-holder cloud cloud-CO2-06">
 					<div class="label">
-						<span class="legend"><span class="label">Years</span>1960-69</span>
-						<span class="stats">3202.85</span>
-						<span class="unit">ppm</span>
+						<span class="legend"></span>
+						<span class="stats"></span>
+						<span class="unit"></span>
 					</div>
 					<div class="info-popbox">
 						<h3>Headline here</h3>
