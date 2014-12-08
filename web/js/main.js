@@ -71,6 +71,7 @@
     // ==========================
 
     hm.canvasSelector();
+    hm.informationPanel();
 
     eventmanager.publish('canvas.selector.updated', {
         newElement: document.getElementsByClassName('select-atmosphere')[0],
