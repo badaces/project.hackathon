@@ -60,7 +60,10 @@
             hm.each(selectors[selector].elements, function (i, collection) {
                 hm.each(collection, function (i, element) {
                     if (i !== 'length') {
-                        element.style.opacity = '1';
+                        d3.select(element).transition()
+                            .delay(40 * i)
+                            .duration(600)
+                            .style('opacity', '1');
                     }
                 });
             });
