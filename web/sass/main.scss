@@ -232,23 +232,27 @@ header {
 }
 
 
-//Controlling the SVG graphics
+//Stages & Scenes
 
-#stage {
-	width: 45%;
+.stage {
+	width: 45%; max-width: 395px; min-width: 290px;
 	position: absolute;
 	top: 60%; left: 27.5%;
+
+	&.stage-CO2 {
+		
+	}
 }
 
-.terrain1 {
-	width: 45%;
+.scene {
+	width: 45%; max-width: 395px; min-width: 290px;
 	position: absolute;
 	bottom: 40%; left: 27.5%; 
 }
 
-.asset.cloud {
-	width: 12%;
-	position: absolute;
-	top: 14%; left: 35%; 
+.cloud {
+	display: none;
 }
+
+
 

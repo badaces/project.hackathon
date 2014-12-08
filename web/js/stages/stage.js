@@ -30,7 +30,7 @@
             var eventmanager = this.eventmanager;
             var assets = [
                 {filename: 'cloud.svg', name: 'cloud'},
-                {filename: 'terrain1.svg', name: 'terrain1'}
+                {filename: 'scene_industrial_CO2.svg', name: 'terrain1'}
             ];
 
             eventmanager.subscribe('d3.stage.ready', function () {
@@ -60,7 +60,7 @@
             var container = this.container;
             var eventmanager = this.eventmanager;
 
-            d3.xml('/web/svg/stage.svg', 'image/svg+xml', function (xml) {
+            d3.xml('/web/svg/stage_CO2pollution.svg', 'image/svg+xml', function (xml) {
                 var element = container.appendChild(xml.documentElement);
 
                 self.stage = d3.select(element).attr('class', 'stage scene-CO2');
@@ -93,9 +93,12 @@
 
             hm.each(clouds, hm.proxy(function (year, data) {
                 var clone = d3.select(this.container.appendChild(cloud.node().cloneNode(true)));
+                var text = d3.select(this.container).append('text');
                 var width = (data.data / 100 / 2);
 
                 width = width >= 12 ? width : 12;
+
+                console.log(text);
 
                 clone
                     .style('left', data.y + '%')
@@ -104,6 +107,16 @@
                     .style('opacity', '1');
 
 
+                text
+                    .attr('class', 'text-CO2')
+                    .attr('x', 300)
+                    .attr('y', 50)
+                    .attr('dy', '0.35em')
+                    .style('fill', 'black')
+                    .style('font', '14px sans-serif')
+                    .text(year + ': ' + data.data);
+                //
+                //console.log(text);
             }, this));
 
             console.log(data);
