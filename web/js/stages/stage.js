@@ -71,31 +71,40 @@
         },
         showClouds: function (data) {
             var cloud = this.assets.cloud;
-            //var bubble = d3.layout.pack()
-            //    .sort(null)
-            //    //.size([300, 300])
-            //    .padding(1.5);
-            //
-            //var svg = d3.select(this.container).append('svg')
-            //    .attr('width', '50%');
-            //
-            //
-            //
-            //
-            //console.log(data);
+            var clouds = {
+                1960: {x: 20, y: 20, entries: 0, data: 0},
+                1970: {x: 30, y: 20, entries: 0, data: 0},
+                1980: {x: 40, y: 20, entries: 0, data: 0},
+                1990: {x: 50, y: 20, entries: 0, data: 0},
+                2000: {x: 60, y: 20, entries: 0, data: 0},
+                2010: {x: 70, y: 20, entries: 0, data: 0}
+            };
 
+            hm.each(data, function (i, record) {
+                if (record.year >= 1960) {
+                    var point = record.year.toString().substring(0, 3) + '0';
 
-            var clouds = [[47, 31, 12], [32, 19, 17], [61, 27, 9], [27, 29, 13], [52, 13, 19]];
+                    clouds[point].entries += 1;
+                    clouds[point].data += record.data;
+                }
+            });
 
-            hm.each(clouds, hm.proxy(function (i, value) {
+            console.log(clouds);
+
+            hm.each(clouds, hm.proxy(function (year, data) {
                 var clone = d3.select(this.container.appendChild(cloud.node().cloneNode(true)));
+                var width = (data.data / 100 / 2);
+
+                width = width >= 12 ? width : 12;
 
                 clone
-                    .style('left', value[0] + '%')
-                    .style('top', value[1] + '%')
-                    .style('width', value[2] + '%')
+                    .style('left', data.y + '%')
+                    .style('top', data.x + '%')
+                    .style('width', width + '%')
                     .style('opacity', '1');
             }, this));
+
+            console.log(data);
         },
         showTerrain: function () {
             this.stage.style('opacity', '1');
