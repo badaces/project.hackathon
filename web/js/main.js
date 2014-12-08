@@ -67,7 +67,7 @@
         }
     });
 
-    // initialize scene selection
+    // initialize stage selection
     // ==========================
 
     hm.canvasSelector();
