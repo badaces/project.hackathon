@@ -67,7 +67,19 @@ update() {
 }
 
 deploy() {
-    echo 'deploy: Hello!'
+    cd $ROOT_DIR
+
+    echo 'deploy: Installing composer dependencies'
+    composer install
+
+    echo 'deploy: '
+    sass --update -f /var/www/html/web/sass/:/var/www/html/web/css
+
+    bin/phinx migrate
+
+    php app/console.php import:temperature_data
+    php app/console.php import:methane_data
+    php app/console.php import:co2_data
 }
 
 run_program() {
