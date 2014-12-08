@@ -3,7 +3,7 @@
 declare -a OPTIONS
 
 ROOT_DIR=/var/www
-GIT_URL=https://github.com/badaces/project.hackathon.git
+GIT_URL=git@github.com:badaces/project.hackathon.git
 
 display_usage() {
     cat <<EOF -
@@ -55,6 +55,9 @@ update() {
         echo 'update: Cloning repository'
         git clone $GIT_URL .
     fi
+
+    echo 'update: Resetting repository'
+    git reset --hard
 
     echo 'update: Pulling latest repository changes'
     git pull
