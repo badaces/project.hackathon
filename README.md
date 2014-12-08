@@ -6,7 +6,7 @@ While there are an ever increasing number of resources explaining climate change
 
 ## Screenshots
 
-![Code Screenshot](/img/screenshot1.jpg)
+![Code Screenshot](/img/screenshot1.png)
 
 ## APIs used
 
