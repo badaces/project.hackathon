@@ -135,7 +135,7 @@ header {
 }
 
 #main-canvas-selectors {
-	display: block;
+	display: none;
 	width: 60%; height: 120px;
 	position: fixed; left: 0; bottom: 0; z-index: 50;
 	background: rgba(#fff,0.95);
@@ -316,7 +316,7 @@ header {
 	}
 
 	.info-popbox {
-		display: block;
+		display: none;
 		width: auto; height: auto; 
 		min-width: 180px;
 		max-width: 320px; max-height: 420px;
@@ -433,6 +433,16 @@ header {
 				
 			}
 		}
+
+		.greenhouse-effect {
+			width: 150%; height: auto;
+			position: absolute;
+			top: 0; left: 50%; margin-left: -75%; z-index: 100;
+
+			img {
+				width: 100%; height: 100%;
+			}
+		}
 	}
 
 	@include responsive($media: 'phone') {
@@ -455,22 +465,5 @@ header {
 		}
 	}
 }
-
-
-
-/* 
-
-<div class="data-holder cloud-CO2-01">
-					<div class="label">
-						<span class="legend"><span class="label"></span></span>
-						<span class="stats"></span>
-						<span class="unit"></span>
-					</div>
-					<div class="info-popbox"></div>
-					<img class="cloud" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-				</div>
-
-
- */
 
 
