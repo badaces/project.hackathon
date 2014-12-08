@@ -6,7 +6,8 @@
 	<p>Application description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quis explicabo, at totam tempora cumque, qui quaerat praesentium, quod voluptatem tempore aliquam dicta nisi blanditiis debitis soluta, eveniet dolor cum eligendi quas. Expedita nam nulla molestiae corrupti sunt sit earum, numquam temporibus. Repellat rerum omnis repudiandae hic placeat, eligendi impedit, reiciendis quos recusandae eveniet quam deleniti cupiditate perspiciatis, iusto quisquam.</p>
 </header>
 
-<h2 class="scene-title">CO2 Emissions since 1960</h2>
+<h2 class="scene-title">Greenhouse Gas Concentrations</h2>
+<p class="data-credit">Data provided by NOAA Mauna Loa Observatory</p>
 
 <div id="main-canvas">
 	<div id="stage-wrapper" class="scene-CO2pollution">
