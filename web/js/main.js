@@ -121,13 +121,14 @@
                         }
                     });
 
-                    cloud.getElementsByClassName('stats')[0].innerHTML = Math.round(info.data * 100) / 100;
-                    cloud.getElementsByClassName('unit')[0].innerHTML = 'ppm';
-
                     var finalYear = info.year === '2010' ? '13' : (+info.year + 9).toString().substring(2, 4);
 
+                    cloud.getElementsByClassName('stats')[0].innerHTML = Math.round((info.data / info.entries) * 100) / 100;
+                    cloud.getElementsByClassName('unit')[0].innerHTML = 'ppm';
                     cloud.getElementsByClassName('legend')[0].innerHTML =
                         '<span class="label">Years</span>' + info.year + '-' + finalYear;
+
+                    //cloud.title = 'add hover title here';
                 }
             });
         }
