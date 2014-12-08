@@ -24,7 +24,7 @@ $tablet-min-width: 768px;
 $tablet-max-width: 1024px;
 $kindle7-max-width: 1200px;
 $kindle7-min-width: 800px;
-$small-screen: 1400px;
+$small-screen: 1440px;
 $medium-screen: 1600px;
 $large-screen: 2200px;
 
@@ -43,6 +43,9 @@ $large-screen: 2200px;
 	}
 	@if $media == 'kindle7' {
 		@media (min-width: $kindle7-min-width) and (max-width: $kindle7-max-width) { @content; }
+	}
+	@if $media == 'small-screen' {
+		@media (max-width: $small-screen) { @content; }
 	}
 	@if $media == 'medium-screen' {
 		@media (max-width: $medium-screen) { @content; }
@@ -206,6 +209,12 @@ h2.scene-title {
 			position: static;
 		}
 	}
+
+	@include responsive($media: 'small-screen') {
+		.info-injector {
+			bottom: auto; top: 180px;
+		}
+	}
 }
 
 #main-canvas-selectors {
@@ -331,6 +340,10 @@ h2.scene-title {
 	@include responsive($media: 'tablet-portrait') {
 		height: 200px; margin-top: 500px;
 	}
+
+	@include responsive($media: 'small-screen') {
+		height: 200px; margin-top: 260px;
+	}
 }
 
 .stage-wrapper {
@@ -351,6 +364,12 @@ h2.scene-title {
 	}
 	 
 	@include responsive($media: 'tablet-portrait') {
+		width: 320px; height: 152px;
+		margin-left: -160px;
+		top: 30%;
+	}
+
+	@include responsive($media: 'small-screen') {
 		width: 320px; height: 152px;
 		margin-left: -160px;
 		top: 30%;
@@ -581,6 +600,16 @@ h2.scene-title {
 	}
 	 
 	@include responsive($media: 'tablet-portrait') {
+		width: 320px; 
+		margin-left: -160px;
+		bottom: 70%;
+
+		&.scene-CO2 {
+			height: 169px;
+		}
+	}
+
+	@include responsive($media: 'small-screen') {
 		width: 320px; 
 		margin-left: -160px;
 		bottom: 70%;
