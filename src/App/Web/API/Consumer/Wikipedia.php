@@ -43,8 +43,8 @@ class Wikipedia extends AbstractConsumer
         $query = array_merge($this->defaultQuery, [
             'action' => 'query',
             'continue' => '',
-            'prop' => 'revisions',
-            'rvprop' => 'content',
+            'prop' => 'extracts',
+            'explaintext' => '',
             'titles' => $name
         ]);
 
@@ -67,13 +67,10 @@ class Wikipedia extends AbstractConsumer
             ));
         }
 
-        $revisions = $articleData['revisions'];
-        $revision = end($revisions);
-
         $article = ArticleMapper::fromArray([
-            'content' => $revision['*'],
+            'content' => $articleData['extract'],
             'id' => $articleData['pageid'],
-            'summary' => $this->getArticleSummary($revision['*']),
+            'summary' => $this->getArticleSummary($articleData['extract']),
             'title' => $articleData['title']
         ]);
 
@@ -85,6 +82,6 @@ class Wikipedia extends AbstractConsumer
         $position = mb_strpos($content, '==');
         $summary = mb_substr($content, 0, $position);
 
-        return $summary;
+        return trim($summary);
     }
 }
