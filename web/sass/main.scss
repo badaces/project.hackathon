@@ -103,12 +103,27 @@ h2.scene-title {
 	display: block;
 	width: 65%; height: auto;
 	position: fixed;
-	left: 0; bottom: 0;
+	left: 0; bottom: 20px;
 	text-align: center;
 
 	@include responsive($media: 'phone-tablet') {
 		width: 100%;
 		bottom: auto; top: 10px;
+		background: rgba(#fff,0.95);
+	}
+}
+
+.data-credit {
+	display: block;
+	width: 65%; height: auto;
+	position: fixed;
+	left: 0; bottom: 10px;
+	text-align: center;
+
+	@include responsive($media: 'phone-tablet') {
+		width: 100%;
+		bottom: auto; top: 80px;
+		background: rgba(#fff,0.95);
 	}
 }
 
@@ -148,6 +163,12 @@ h2.scene-title {
 		width: 100%;
 		padding: 0; margin-top: 100px;
 		position: static;
+
+		.source-header {
+			position: static;
+			margin: 0 0 50px 10%;
+			width: 40%;
+		}
 
 		.info-injector {
 			padding: 0;
