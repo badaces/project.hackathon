@@ -93,9 +93,12 @@
 
             hm.each(clouds, hm.proxy(function (year, data) {
                 var clone = d3.select(this.container.appendChild(cloud.node().cloneNode(true)));
+                var text = d3.select(this.container).append('text');
                 var width = (data.data / 100 / 2);
 
                 width = width >= 12 ? width : 12;
+
+                console.log(text);
 
                 clone
                     .style('left', data.y + '%')
@@ -104,6 +107,16 @@
                     .style('opacity', '1');
 
 
+                text
+                    .attr('class', 'text-CO2')
+                    .attr('x', 300)
+                    .attr('y', 50)
+                    .attr('dy', '0.35em')
+                    .style('fill', 'black')
+                    .style('font', '14px sans-serif')
+                    .text(year + ': ' + data.data);
+                //
+                //console.log(text);
             }, this));
 
             console.log(data);
