@@ -124,9 +124,23 @@
                     var finalYear = info.year === '2010' ? '13' : (+info.year + 9).toString().substring(2, 4);
 
                     cloud.getElementsByClassName('stats')[0].innerHTML = Math.round((info.data / info.entries) * 100) / 100;
-                    cloud.getElementsByClassName('unit')[0].innerHTML = 'ppm';
+                    cloud.getElementsByClassName('unit')[0].innerHTML = 'avg ppm CO2';
                     cloud.getElementsByClassName('legend')[0].innerHTML =
                         '<span class="label">Years</span>' + info.year + '-' + finalYear;
+
+                    if (info.year === '1970') {
+                        cloud.getElementsByClassName('stats')[0].innerHTML = '1656.1';
+                        cloud.getElementsByClassName('unit')[0].innerHTML = 'avg ppb CH4';
+                        cloud.getElementsByClassName('legend')[0].innerHTML =
+                            '<span class="label">Year</span> 1984';
+                    }
+
+                    if (info.year === '1990') {
+                        cloud.getElementsByClassName('stats')[0].innerHTML = '1831.1';
+                        cloud.getElementsByClassName('unit')[0].innerHTML = 'avg ppb CH4';
+                        cloud.getElementsByClassName('legend')[0].innerHTML =
+                            '<span class="label">Year</span> 2013';
+                    }
 
                     //cloud.title = 'add hover title here';
                 }
