@@ -120,7 +120,7 @@ h2.scene-title {
 	display: block;
 	width: 220px; height: 45px;
 	position: fixed;
-	left:32%; bottom: 150px; margin-left: -110px;
+	left:32%; bottom: 150px; margin-left: -110px; z-index: 5000;
 	text-align: center;
 	cursor: pointer;
 	$color: #e27115; 
@@ -133,6 +133,10 @@ h2.scene-title {
 		$color: #d24c17;
 		background-color: $color;
 		transition: background-color 0.25s ease-out;
+	}
+
+	@include responsive($media: 'small-screen') {
+		bottom: 130px;
 	}
 
 	@include responsive($media: 'phone-tablet') {
