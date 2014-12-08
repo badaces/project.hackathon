@@ -15,6 +15,9 @@
 			</div>
 			<div class="scene-wrapper scene-CO2">
 				<img class="scene scene-CO2" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
+				<!-- <div class="greenhouse-effect">
+					<img class="scene scene-CO2" src="/web/svg/greenhouse_bubble.png" width="100%" height="auto" alt="">
+				</div> -->
 				<div class="data-holder cloud-CO2-01">
 					<div class="label">
 						<span class="legend"><span class="label"></span></span>
