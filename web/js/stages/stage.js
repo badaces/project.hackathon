@@ -69,8 +69,22 @@
                 eventmanager.publish('d3.stage.ready');
             });
         },
-        showClouds: function () {
+        showClouds: function (data) {
             var cloud = this.assets.cloud;
+            //var bubble = d3.layout.pack()
+            //    .sort(null)
+            //    //.size([300, 300])
+            //    .padding(1.5);
+            //
+            //var svg = d3.select(this.container).append('svg')
+            //    .attr('width', '50%');
+            //
+            //
+            //
+            //
+            //console.log(data);
+
+
             var clouds = [[47, 31, 12], [32, 19, 17], [61, 27, 9], [27, 29, 13], [52, 13, 19]];
 
             hm.each(clouds, hm.proxy(function (i, value) {

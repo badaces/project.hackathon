@@ -1,4 +1,4 @@
-;(function (hm, d3) {
+;(function (hm, d3, $) {
     'use strict';
 
     console.log('hm:', hm);
@@ -17,17 +17,16 @@
     });
 
     eventmanager.subscribe('d3.stage.assets.ready', function () {
-        var xmlhttp = new XMLHttpRequest();
-
-        xmlhttp.open('GET', '/statistics?type=co2');
-        xmlhttp.send();
-
-        console.log(xmlhttp);
-
-
-
-
         stage.showTerrain();
-        stage.showClouds();
+
+        $.ajax({
+            url: '/statistics?type=co2',
+            success: function (data) {
+                stage.showClouds(data.result);
+            },
+            error: function () {
+                console.log('unable to load co2 data');
+            }
+        });
     });
-})(hm, d3);
+})(hm, d3, jQuery);
