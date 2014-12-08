@@ -234,10 +234,14 @@ header {
 
 //Controlling the SVG graphics
 
-#stage {
+.stage {
 	width: 45%;
 	position: absolute;
 	top: 60%; left: 27.5%;
+
+	&.scene-CO2 {
+
+	}
 }
 
 .terrain1 {

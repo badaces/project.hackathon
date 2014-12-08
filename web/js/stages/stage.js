@@ -30,7 +30,7 @@
             var eventmanager = this.eventmanager;
             var assets = [
                 {filename: 'cloud.svg', name: 'cloud'},
-                {filename: 'terrain1.svg', name: 'terrain1'}
+                {filename: 'scene_industrial_CO2.svg', name: 'terrain1'}
             ];
 
             eventmanager.subscribe('d3.stage.ready', function () {
@@ -60,7 +60,7 @@
             var container = this.container;
             var eventmanager = this.eventmanager;
 
-            d3.xml('/web/svg/stage.svg', 'image/svg+xml', function (xml) {
+            d3.xml('/web/svg/stage_CO2pollution.svg', 'image/svg+xml', function (xml) {
                 var element = container.appendChild(xml.documentElement);
 
                 self.stage = d3.select(element).attr('class', 'stage scene-CO2');
