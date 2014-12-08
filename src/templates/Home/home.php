@@ -7,15 +7,20 @@
 </header>
 
 <div id="main-canvas">
-	<div id="stage-wrapper" class="stage-wrapper scene-CO2">
-        <?php /*
+	<div id="stage-wrapper" class="stage-wrapper scene-CO2pollution">
+
 		<div class="infographic">
-			<img src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="Bla bla bla">
+			<img class="stage stage-CO2" src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="">
+			<img class="scene scene-CO2" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
+			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
 		</div>
 
 		<div class="associated-data"></div>
-        */ ?>
-
 	</div>
 </div>
 
@@ -30,7 +35,6 @@
 	</div>
 
 	<div class="additional-data"></div>
-
 	<div class="additional-data twitter-feed"></div>
 </div>
 
@@ -40,7 +44,6 @@
 		<li class="select-cryosphere"><span class="icon"></span><span class="label">Cryosphere</span></li>
 		<li class="select-hydrosphere"><span class="icon"></span><span class="label">Hydrosphere</span></li>
 		<li class="select-lithosphere"><span class="icon"></span><span class="label">Lithosphere</span></li>
-<!-- 		<li class="select-biosphere"><span class="icon"></span><span class="label">Biosphere</span></li>
- -->		<li class="select-atmosphere"><span class="icon"></span><span class="label">Atmosphere</span></li>
+		<li class="select-atmosphere"><span class="icon"></span><span class="label">Atmosphere</span></li>
 	</ul>
 </div>
