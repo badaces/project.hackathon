@@ -63,7 +63,7 @@
             d3.xml('/web/svg/stage.svg', 'image/svg+xml', function (xml) {
                 var element = container.appendChild(xml.documentElement);
 
-                self.stage = d3.select(element).attr('id', 'stage');
+                self.stage = d3.select(element).attr('class', 'stage scene-CO2');
                 self.stage.style('opacity', '0');
 
                 eventmanager.publish('d3.stage.ready');
@@ -102,6 +102,8 @@
                     .style('top', data.x + '%')
                     .style('width', width + '%')
                     .style('opacity', '1');
+
+
             }, this));
 
             console.log(data);
