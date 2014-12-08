@@ -6,6 +6,7 @@
 	<p>Application description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quis explicabo, at totam tempora cumque, qui quaerat praesentium, quod voluptatem tempore aliquam dicta nisi blanditiis debitis soluta, eveniet dolor cum eligendi quas. Expedita nam nulla molestiae corrupti sunt sit earum, numquam temporibus. Repellat rerum omnis repudiandae hic placeat, eligendi impedit, reiciendis quos recusandae eveniet quam deleniti cupiditate perspiciatis, iusto quisquam.</p>
 </header>
 
+<div class="greenhouse-toggle">Toggle Greenhouse Effect</div>
 <h2 class="scene-title">Greenhouse Gas Concentrations</h2>
 <p class="data-credit">Data provided by NOAA Mauna Loa Observatory</p>
 
@@ -18,9 +19,9 @@
 			</div>
 			<div class="scene-wrapper scene-CO2">
 				<img class="scene scene-CO2-img" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
-				<!-- <div class="greenhouse-effect">
+				<div class="greenhouse-effect">
 					<img src="/web/img/greenhouse_bubble.png" width="100%" height="auto" alt="">
-				</div> -->
+				</div>
 				<div class="data-holder cloud cloud-CO2-01">
 					<div class="label">
 						<span class="legend"><span class="label"></span></span>
