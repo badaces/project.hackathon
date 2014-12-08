@@ -7,17 +7,21 @@
 </header>
 
 <div id="main-canvas">
-	<div id="stage-wrapper" class="stage-wrapper scene-CO2pollution">
+	<div id="stage-wrapper" class="scene-CO2pollution">
 
 		<div class="infographic">
-			<img class="stage stage-CO2" src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="">
-			<img class="scene scene-CO2" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
-			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
-			<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+			<div class="stage-wrapper">
+				<img class="stage stage-CO2" src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="">
+			</div>
+			<div class="scene-wrapper scene-CO2">
+				<img class="scene scene-CO2" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
+				<img class="cloud cloud-CO2-01" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				<img class="cloud cloud-CO2-02" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				<img class="cloud cloud-CO2-03" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				<img class="cloud cloud-CO2-04" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				<img class="cloud cloud-CO2-05" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+				<img class="cloud cloud-CO2-06" src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+			</div>
 		</div>
 
 		<div class="associated-data"></div>

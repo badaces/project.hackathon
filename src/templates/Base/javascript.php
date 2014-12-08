@@ -13,10 +13,6 @@
 <script src="<?= $this->asset('js/components/canvas-selector.js') ?>"></script>
 <script src="<?= $this->asset('js/components/information-panel.js') ?>"></script>
 
-<?php // Interactive Panels ?>
-
-<script src="<?= $this->asset('js/stages/stage.js') ?>"></script>
-
 <?php // Single Javascript Entry Point ?>
 
 <script src="<?= $this->asset('js/main.js') ?>"></script>

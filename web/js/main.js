@@ -3,10 +3,7 @@
 
     console.log('hm:', hm);
 
-    // create a global event manager
-    hm.extend(hm, {eventmanager: new Publisher()});
-
-    var eventmanager = hm.eventmanager;
+    var eventmanager = hm.eventManager();
 
     hm.watchMethod(eventmanager, 'publish', function (event) {
         console.log('published: ', event);
@@ -19,19 +16,19 @@
 
     var selectors = {
         cryosphere: {
-            //stage: document.getElementsByClassName('stage-CO2')[0],
-            //scene: document.getElementsByClassName('scene-CO2')[0],
-            //elements: [clouds]
+            stage: undefined,
+            scene: undefined,
+            elements: undefined
         },
         hydrosphere: {
-            //stage: document.getElementsByClassName('stage-CO2')[0],
-            //scene: document.getElementsByClassName('scene-CO2')[0],
-            //elements: [clouds]
+            stage: undefined,
+            scene: undefined,
+            elements: undefined
         },
         lithosphere: {
-            //stage: document.getElementsByClassName('stage-CO2')[0],
-            //scene: document.getElementsByClassName('scene-CO2')[0],
-            //elements: [clouds]
+            stage: undefined,
+            scene: undefined,
+            elements: undefined
         },
         atmosphere: {
             stage: document.getElementsByClassName('stage-CO2')[0],
@@ -50,28 +47,32 @@
         });
     };
 
-    eventmanager.subscribe('canvas.selectors.updated', function (data) {
+    eventmanager.subscribe('canvas.selector.updated', function (data) {
         var newElement = data.newElement;
         var selector = newElement.textContent.toLowerCase();
 
         hideElements();
 
-        selectors[selector].stage.style.opacity = '1';
-        selectors[selector].scene.style.opacity = '1';
+        if (selectors[selector] && selectors[selector].stage) {
+            selectors[selector].stage.style.opacity = '1';
+            selectors[selector].scene.style.opacity = '1';
 
-        hm.each(selectors[selector].elements, function (i, collection) {
-            hm.each(collection, function (i, element) {
-                if (i != 'length') {
-                    element.style.opacity = '1';
-                }
+            hm.each(selectors[selector].elements, function (i, collection) {
+                hm.each(collection, function (i, element) {
+                    if (i != 'length') {
+                        element.style.opacity = '1';
+                    }
+                });
             });
-        });
+        }
     });
 
-    // initialize scene selection
+    // initialize stage selection
     // ==========================
 
-    eventmanager.publish('canvas.selectors.updated', {
+    hm.canvasSelector();
+
+    eventmanager.publish('canvas.selector.updated', {
         newElement: document.getElementsByClassName('select-atmosphere')[0],
         oldElement: undefined
     });
@@ -82,8 +83,6 @@
     var cloudRequest = new XMLHttpRequest();
 
     cloudRequest.open('GET', '/statistics?type=co2', true);
-    cloudRequest.send();
-
     cloudRequest.responseType = 'json';
     cloudRequest.onreadystatechange = function () {
         if (cloudRequest.readyState === 4 && cloudRequest.status === 200) {
@@ -112,4 +111,7 @@
             console.log(clouds);
         }
     };
+
+    cloudRequest.send();
+
 })(hm, d3, jQuery);
