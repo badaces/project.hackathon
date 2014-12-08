@@ -14,6 +14,7 @@
     var scenes = document.getElementsByClassName('scene');
     var clouds = document.getElementsByClassName('cloud');
     var bubble = document.getElementsByClassName('greenhouse-effect')[0];
+    var bubbleOn = false;
 
     var selectors = {
         cryosphere: {
@@ -40,6 +41,7 @@
 
     var hideElements = function () {
         bubble.style.opacity = '0';
+        bubbleOn = false;
 
         hm.each([stages, scenes, clouds], function (i, collection) {
             hm.each(collection, function (i, element) {
@@ -64,7 +66,7 @@
                 hm.each(collection, function (i, element) {
                     if (i !== 'length') {
                         d3.select(element).transition()
-                            .delay(100 + (100 * i))
+                            .delay(100 + (120 * i))
                             .duration(600)
                             .style('opacity', '1');
 
@@ -80,7 +82,9 @@
     var buttun = document.getElementsByClassName('greenhouse-toggle')[0].onclick = function () {
         d3.select(bubble).transition()
             .duration(1000)
-            .style('opacity', '1');
+            .style('opacity', (bubbleOn ? '0' : '1'));
+
+        bubbleOn = !bubbleOn;
     };
 
     console.log(buttun);
