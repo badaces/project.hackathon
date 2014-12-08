@@ -80,11 +80,16 @@
     // ===============================
 
     var cloudRequest = new XMLHttpRequest();
+
+    cloudRequest.open('GET', '/statistics?type=co2', true);
+    cloudRequest.send();
+
     cloudRequest.responseType = 'json';
     cloudRequest.onreadystatechange = function () {
         if (cloudRequest.readyState === 4 && cloudRequest.status === 200) {
             // consume cloud data
             var data = cloudRequest.response.result;
+
             var clouds = {
                 1960: {entries: 0, data: 0},
                 1970: {entries: 0, data: 0},
@@ -107,11 +112,4 @@
             console.log(clouds);
         }
     };
-
-    cloudRequest.open('GET', '/statistics?type=co2', true);
-    cloudRequest.send();
-
-
-
-
 })(hm, d3, jQuery);
