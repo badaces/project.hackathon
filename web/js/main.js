@@ -71,11 +71,9 @@
     // initialize scene selection
     // ==========================
 
-    hideElements();
-
     eventmanager.publish('canvas.selectors.updated', {
         newElement: document.getElementsByClassName('select-atmosphere')[0],
-        oldElement: document.getElementsByClassName('select-hydrosphere')[0]
+        oldElement: undefined
     });
 
     // set up cloud CO2 emissions data
