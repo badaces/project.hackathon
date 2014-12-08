@@ -8,18 +8,59 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 $bodycolor: #4F4F4F;
 
+
+//Media Queries
+
+$phone-min-width: 320px;
+$phone-max-width: 480px;
+$tablet-min-width: 768px;
+$tablet-max-width: 1024px;
+$kindle7-max-width: 1200px;
+$kindle7-min-width: 800px;
+$small-screen: 1400px;
+$medium-screen: 1600px;
+$large-screen: 2200px;
+
+@mixin responsive($media: 'default', $min-width: 'default', $max-width: 'default') {
+	@if $media == 'phone' {
+		@media (max-width: $phone-max-width) { @content; }
+	}
+	@if $media == 'phone-tablet' {
+		@media (max-width: $tablet-min-width) { @content; }
+	}
+	@if $media == 'tablet-portrait' {
+		@media (min-width: $phone-max-width + 1px) and (max-width: $tablet-min-width) { @content; }
+	}
+	@if $media == 'tablet-landscape' {
+		@media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) { @content; }
+	}
+	@if $media == 'kindle7' {
+		@media (min-width: $kindle7-min-width) and (max-width: $kindle7-max-width) { @content; }
+	}
+	@if $media == 'medium-screen' {
+		@media (max-width: $medium-screen) { @content; }
+	}
+	@if $media == 'large-screen' {
+		@media (max-width: $large-screen) { @content; }
+	}
+	@if $media == 'default' {
+		@media (min-width: $min-width) and (max-width: $max-width) { @content; }
+	}
+}
+
+
 //General Styles
 
 body {
-	width: 100%; height: 100%; max-height: 100%;
-	font-family: 'Open Sans', 'Lucida Sans Unicode', sans-serif;
+	width: 100%; height: 100%; max-height: 100%; min-height: 600px;
+	font-family: 'Overlock', Georgia, sans-serif;
 	font-weight: 100;
-	font-size: 1em; line-height: 1.25em;
+	font-size: 1.125em; line-height: 1.25em;
 	color: $bodycolor;
 }
 
 #allwrap {
-	width: 100%; height: 100%; max-height: 100%; position: relative;
+	width: 100%; height: 100%; max-height: 100%; position: relative; min-height: 600px;
 }
 
 h1, h2, h3, h4 {
@@ -29,19 +70,35 @@ h1, h2, h3, h4 {
 
 h2 {
 	font-size: 2.25em;
-	font-weight: 400; line-height: 1.5em;
+	font-weight: 400; line-height: 1.35em;
 	margin-bottom: 40px;
 }
 
 p {
 	line-height: 1.45em;
+
+	& + p {
+		margin-top: 1.125em;
+	}
 }
 
-#stage-wrapper {
-	width: 60%; height: 50%; max-height: 50%;
-	position: fixed;
-	left: 20%; top: 25%;
+#main-canvas {
+	width: 65%; height: 50%; max-height: 50%;
+	position: fixed; left: 0; top: 25%;
 	overflow: hidden;
+
+	.stage-wrapper {
+		width: 100%; height: 100%;
+		overflow: hidden;
+		position: relative;
+	}
+
+	@include responsive($media: 'phone-tablet') {
+		width: 100%; height: 420px; max-height: 420px;
+		margin-top: 120px; padding-top: 80px;
+		position: static;
+		overflow: hidden;
+	}
 }
 
 .infographic {
@@ -54,19 +111,49 @@ header {
 }
 
 #information-wrapper {
-	width: 20%; height: auto; max-height: 80%;
+	width: 35%; height: 100%; max-height: 100%;
+	padding-right: 40px;
 	position: fixed;
-	right: 5%; bottom: 20%;
+	right: -40px; bottom: 0;
+	overflow-x: hidden; overflow-y: scroll;  
+	box-sizing: border-box;
+	border-left: 1px solid rgba(#000,0.15);
+
+	.info-injector {
+		width: 80%; height: auto; max-height: 75%;
+		padding: 0 0 40px 10%;
+		box-sizing: border-box;
+		position: absolute;
+		left: 0; bottom: 100px;
+		
+		.source-caption {
+			border-top: 3px solid rgba(#000,0.15);
+			height: 80px; padding-top: 20px; margin-top: 30px;
+		}
+	}
+
+	@include responsive($media: 'phone-tablet') {
+		width: 100%;
+		padding: 0; margin-top: 100px;
+		position: static;
+
+		.info-injector {
+			padding: 0;
+			margin: 0 auto;
+			position: static;
+		}
+	}
 }
 
 #main-canvas-selectors {
 	display: block;
-	width: 50%; height: 17.5%;
-	position: fixed; left: 25%; bottom: 0;
+	width: 60%; height: 100px;
+	position: fixed; left: 0; bottom: 0;
 
 	ul {
 		display: block; 
-		width: 100%; height: 80%;
+		width: 80%; height: 100%;
+		margin: 0 auto;
 
 		li {
 			display: block;
@@ -75,7 +162,7 @@ header {
 
 			.icon {
 				display: block;
-				width: 70%; height: 60%;
+				width: 100%; height: 60%;
 				position: absolute;
 				left: 0; top: 0; z-index: 5;
 			}
@@ -85,9 +172,9 @@ header {
 				width: 100%; height: 2em;
 				text-align: center;
 				font-family: 'Roboto Slab';
-				font-size: 1.25em; line-height: 2em; font-weight: 400;
+				font-size: 0.75em; line-height: 2em; font-weight: 400;
 				color: rgba(#fff,0);
-				position: absolute; left: 0; bottom: 20px;
+				position: absolute; left: 0; bottom: 10px;
 			}
 
 			&.select-cryosphere {
@@ -133,6 +220,15 @@ header {
 			}
 		}
 	}
+
+	@include responsive($media: 'phone-tablet') {
+		width: 100%;
+		bottom: auto; top: 30px;
+
+		ul {
+			width: 100%;
+		}
+	}
 }
 
 
@@ -141,13 +237,13 @@ header {
 #stage {
 	width: 45%;
 	position: absolute;
-	top: 50%; left: 27.5%;
+	top: 60%; left: 27.5%;
 }
 
 .terrain1 {
 	width: 45%;
 	position: absolute;
-	bottom: 50%; left: 27.5%; 
+	bottom: 40%; left: 27.5%; 
 }
 
 .asset.cloud {
