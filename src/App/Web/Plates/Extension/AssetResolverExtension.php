@@ -28,7 +28,7 @@ class AssetResolverExtension implements ExtensionInterface
         $actualPath = $path;
         $newPath = '/web/%s';
 
-        if ($this->isLocal) {
+        if (!$this->isLocal) {
             $newPath = '/%s';
         }
 
