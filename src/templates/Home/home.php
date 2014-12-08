@@ -15,12 +15,12 @@
 
 		<div class="infographic">
 			<div class="stage-wrapper">
-				<img class="stage stage-CO2-img" src="/web/svg/stage_CO2pollution.svg" width="100%" height="auto" alt="">
+				<img class="stage stage-CO2-img" src="<?= $this->asset('/svg/stage_CO2pollution.svg') ?>" width="100%" height="auto" alt="">
 			</div>
 			<div class="scene-wrapper scene-CO2">
-				<img class="scene scene-CO2-img" src="/web/svg/scene_industrial_CO2.svg" width="100%" height="auto" alt="">
+				<img class="scene scene-CO2-img" src="<?= $this->asset('/svg/scene_industrial_CO2.svg') ?>" width="100%" height="auto" alt="">
 				<div class="greenhouse-effect">
-					<img src="/web/img/greenhouse_bubble.png" width="100%" height="auto" alt="">
+					<img src="<?= $this->asset('/img/greenhouse_bubble.png') ?>" width="100%" height="auto" alt="">
 				</div>
 				<div class="data-holder cloud cloud-CO2-01">
 					<div class="label">
@@ -29,7 +29,7 @@
 						<span class="unit"></span>
 					</div>
 					<div class="info-popbox"></div>
-					<img src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+					<img src="<?= $this->asset('/svg/cloud.svg') ?>" width="100%" height="auto" alt="">
 				</div>
 				<div class="data-holder cloud cloud-CO2-02">
 					<div class="label">
@@ -38,7 +38,7 @@
 						<span class="unit"></span>
 					</div>
 					<div class="info-popbox"></div>
-					<img src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+					<img src="<?= $this->asset('/svg/cloud.svg') ?>" width="100%" height="auto" alt="">
 				</div>
 				<div class="data-holder cloud cloud-CO2-03">
 					<div class="label">
@@ -47,7 +47,7 @@
 						<span class="unit"></span>
 					</div>
 					<div class="info-popbox"></div>
-					<img src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+					<img src="<?= $this->asset('/svg/cloud.svg') ?>" width="100%" height="auto" alt="">
 				</div>
 				<div class="data-holder cloud cloud-CO2-04">
 					<div class="label">
@@ -56,7 +56,7 @@
 						<span class="unit"></span>
 					</div>
 					<div class="info-popbox"></div>
-					<img src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+					<img src="<?= $this->asset('/svg/cloud.svg') ?>" width="100%" height="auto" alt="">
 				</div>
 				<div class="data-holder cloud cloud-CO2-05">
 					<div class="label">
@@ -65,7 +65,7 @@
 						<span class="unit"></span>
 					</div>
 					<div class="info-popbox"></div>
-					<img src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+					<img src="<?= $this->asset('/svg/cloud.svg') ?>" width="100%" height="auto" alt="">
 				</div>
 				<div class="data-holder cloud cloud-CO2-06">
 					<div class="label">
@@ -78,7 +78,7 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam iste atque laborum ratione, culpa deserunt ut, commodi. Omnis illum deleniti quisquam nisi deserunt iure quidem, nulla quas necessitatibus, doloremque nihil!</p>
 						<a href="" class="close-action"></a>
 					</div>
-					<img src="/web/svg/cloud.svg" width="100%" height="auto" alt="">
+					<img src="<?= $this->asset('/svg/cloud.svg') ?>" width="100%" height="auto" alt="">
 				</div>
 			</div>
 		</div>
